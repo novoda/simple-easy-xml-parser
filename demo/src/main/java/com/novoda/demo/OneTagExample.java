@@ -17,7 +17,7 @@ public class OneTagExample implements Example {
 
     @Override
     public void execute() {
-        ElementFinderFactory factory = SimpleEasyXmlParser.getElementCreatorFactory();
+        ElementFinderFactory factory = SimpleEasyXmlParser.getElementFinderFactory();
         elementFinder = factory.getStringFinder();
         Instigator instigator = new OneElementInstigator(elementFinder, "novoda", finishWatcher);
         SimpleEasyXmlParser.parse(XML, instigator);

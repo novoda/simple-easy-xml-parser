@@ -10,7 +10,7 @@ import java.io.UnsupportedEncodingException;
 
 public class SimpleEasyXmlParser {
 
-    public static ElementFinderFactory getElementCreatorFactory() {
+    public static ElementFinderFactory getElementFinderFactory() {
         return new ElementFinderFactory();
     }
 

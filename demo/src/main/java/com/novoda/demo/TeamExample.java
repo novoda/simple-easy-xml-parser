@@ -31,7 +31,7 @@ public class TeamExample implements Example {
 
     @Override
     public void execute() {
-        ElementFinderFactory factory = SimpleEasyXmlParser.getElementCreatorFactory();
+        ElementFinderFactory factory = SimpleEasyXmlParser.getElementFinderFactory();
         elementFinder = factory.getStringWrapperTypeListFinder("name", TeamMember.class);
         Instigator instigator = new TeamInstigator(elementFinder, finishWatcher);
         SimpleEasyXmlParser.parse(XML, instigator);
