@@ -1,4 +1,5 @@
-package android.sax;
+package com.novoda.sax;
+
 /*
  * Copyright (C) 2007 The Android Open Source Project
  *
@@ -15,17 +16,19 @@ package android.sax;
  * limitations under the License.
  */
 
-import org.xml.sax.Attributes;
+import org.xml.sax.Locator;
+import org.xml.sax.SAXParseException;
 
 /**
- * Listens for the beginning of elements.
+ * An XML parse exception which includes the line number in the message.
  */
-public interface StartElementListener {
+class BadXmlException extends SAXParseException {
 
-    /**
-     * Invoked at the beginning of an element.
-     *
-     * @param attributes from the element
-     */
-    void start(Attributes attributes);
+    public BadXmlException(String message, Locator locator) {
+        super(message, locator);
+    }
+
+    public String getMessage() {
+        return "Line " + getLineNumber() + ": " + super.getMessage();
+    }
 }

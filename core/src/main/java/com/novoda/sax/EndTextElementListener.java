@@ -1,4 +1,4 @@
-package android.sax;
+package com.novoda.sax;
 
 /*
  * Copyright (C) 2007 The Android Open Source Project
@@ -16,19 +16,15 @@ package android.sax;
  * limitations under the License.
  */
 
-import org.xml.sax.Locator;
-import org.xml.sax.SAXParseException;
-
 /**
- * An XML parse exception which includes the line number in the message.
+ * Listens for the end of text elements.
  */
-class BadXmlException extends SAXParseException {
+public interface EndTextElementListener {
 
-    public BadXmlException(String message, Locator locator) {
-        super(message, locator);
-    }
-
-    public String getMessage() {
-        return "Line " + getLineNumber() + ": " + super.getMessage();
-    }
+    /**
+     * Invoked at the end of a text element with the body of the element.
+     *
+     * @param body of the element
+     */
+    void end(String body);
 }

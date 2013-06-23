@@ -1,6 +1,6 @@
 package com.novoda.sexp.parser;
 
-import android.sax.RootElement;
+import com.novoda.sax.RootElement;
 
 import org.xml.sax.SAXException;
 

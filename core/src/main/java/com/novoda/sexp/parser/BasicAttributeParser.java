@@ -1,7 +1,7 @@
 package com.novoda.sexp.parser;
 
-import android.sax.Element;
-import android.sax.StartElementListener;
+import com.novoda.sax.Element;
+import com.novoda.sax.StartElementListener;
 
 import com.novoda.sexp.marshaller.AttributeMarshaller;
 

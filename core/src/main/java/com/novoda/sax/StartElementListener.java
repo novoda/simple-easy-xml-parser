@@ -1,5 +1,4 @@
-package android.sax;
-
+package com.novoda.sax;
 /*
  * Copyright (C) 2007 The Android Open Source Project
  *
@@ -16,13 +15,17 @@ package android.sax;
  * limitations under the License.
  */
 
+import org.xml.sax.Attributes;
+
 /**
- * Listens for the end of elements.
+ * Listens for the beginning of elements.
  */
-public interface EndElementListener {
+public interface StartElementListener {
 
     /**
-     * Invoked at the end of an element.
+     * Invoked at the beginning of an element.
+     *
+     * @param attributes from the element
      */
-    void end();
+    void start(Attributes attributes);
 }

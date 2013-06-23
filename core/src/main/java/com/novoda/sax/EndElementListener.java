@@ -1,4 +1,4 @@
-package android.sax;
+package com.novoda.sax;
 
 /*
  * Copyright (C) 2007 The Android Open Source Project
@@ -17,7 +17,12 @@ package android.sax;
  */
 
 /**
- * Listens for the beginning and ending of elements.
+ * Listens for the end of elements.
  */
-public interface ElementListener extends StartElementListener, EndElementListener {
+public interface EndElementListener {
+
+    /**
+     * Invoked at the end of an element.
+     */
+    void end();
 }

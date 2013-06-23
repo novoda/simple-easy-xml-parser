@@ -1,7 +1,7 @@
 package com.novoda.sexp.parser;
 
-import android.sax.Element;
-import android.sax.EndTextElementListener;
+import com.novoda.sax.Element;
+import com.novoda.sax.EndTextElementListener;
 
 import com.novoda.sexp.marshaller.BodyMarshaller;
 

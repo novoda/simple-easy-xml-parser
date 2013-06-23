@@ -1,6 +1,6 @@
 package com.novoda.sexp.parser;
 
-import android.sax.ElementListener;
+import com.novoda.sax.ElementListener;
 
 import org.xml.sax.Attributes;
 

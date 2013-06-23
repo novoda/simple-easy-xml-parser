@@ -16,7 +16,7 @@ public class BasicElementFinderShould {
     @Mock
     private Parser<Object> mockParser;
     @Mock
-    private android.sax.Element mockElement;
+    private com.novoda.sax.Element mockElement;
 
     BasicElementFinder<Object> elementCreator;
 

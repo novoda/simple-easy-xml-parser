@@ -19,7 +19,7 @@ public class ListElementFinderShould {
     private ParseWatcher<Object> mockWatcher;
 
     @Mock
-    private android.sax.Element mockElement;
+    private com.novoda.sax.Element mockElement;
     ListElementFinder<Object> elementCreator;
 
     @Before

@@ -1,7 +1,7 @@
 package com.novoda.demo.onetag;
 
-import android.sax.EndTextElementListener;
-import android.sax.RootElement;
+import com.novoda.sax.EndTextElementListener;
+import com.novoda.sax.RootElement;
 
 import com.novoda.sexp.Instigator;
 import com.novoda.sexp.finder.ElementFinder;

@@ -1,6 +1,6 @@
 package com.novoda.sexp.parser;
 
-import android.sax.Element;
+import com.novoda.sax.Element;
 
 public interface Parser<T> {
     void parse(Element element, ParseWatcher<T> listener);

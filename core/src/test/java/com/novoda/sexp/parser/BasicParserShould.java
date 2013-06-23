@@ -1,6 +1,6 @@
 package com.novoda.sexp.parser;
 
-import android.sax.EndTextElementListener;
+import com.novoda.sax.EndTextElementListener;
 
 import com.novoda.sexp.marshaller.BodyMarshaller;
 
@@ -18,7 +18,7 @@ public class BasicParserShould {
     @Mock
     private BodyMarshaller<Object> mockMarshaller;
     @Mock
-    private android.sax.Element mockElement;
+    private com.novoda.sax.Element mockElement;
     @Mock
     private ParseWatcher<Object> mockListener;
 

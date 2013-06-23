@@ -1,7 +1,7 @@
 package com.novoda.sexp;
 
-import android.sax.EndElementListener;
-import android.sax.RootElement;
+import com.novoda.sax.EndElementListener;
+import com.novoda.sax.RootElement;
 
 /**
  * {@link SimpleTagInstigator } is an example implementation

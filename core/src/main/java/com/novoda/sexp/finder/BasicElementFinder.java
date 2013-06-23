@@ -1,6 +1,6 @@
 package com.novoda.sexp.finder;
 
-import android.sax.Element;
+import com.novoda.sax.Element;
 
 import com.novoda.sexp.parser.Parser;
 

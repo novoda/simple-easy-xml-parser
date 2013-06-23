@@ -1,6 +1,6 @@
 package com.novoda.sexp;
 
-import android.sax.RootElement;
+import com.novoda.sax.RootElement;
 
 import com.novoda.sexp.finder.ElementFinderFactory;
 
