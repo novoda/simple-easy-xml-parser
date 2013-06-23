@@ -1,5 +1,6 @@
-package com.novoda.demo;
+package com.novoda.demo.team;
 
+import com.novoda.demo.Example;
 import com.novoda.sexp.Instigator;
 import com.novoda.sexp.SimpleEasyXmlParser;
 import com.novoda.sexp.SimpleTagInstigator;
@@ -53,19 +54,6 @@ public class TeamExample implements Example {
         @Override
         public String getRootTag() {
             return "novoda";
-        }
-    }
-
-    public static class TeamMember {
-        private final String name;
-
-        public TeamMember(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String toString() {
-            return name;
         }
     }
 

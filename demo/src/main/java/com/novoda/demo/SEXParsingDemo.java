@@ -1,5 +1,9 @@
 package com.novoda.demo;
 
+import com.novoda.demo.onetag.OneTagExample;
+import com.novoda.demo.simple.SimpleExample;
+import com.novoda.demo.team.TeamExample;
+
 public class SEXParsingDemo {
 
     public static void main(String[] args) {
