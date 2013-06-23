@@ -1,0 +1,19 @@
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.+'
+        testCompile group: 'com.squareup', name: 'fest-android', version: '1.0.+'
+        testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.+'
+    }
+
+    version = '1.0.0'
+
+    jar {
+        manifest.attributes provider: 'Novoda'
+    }
+}

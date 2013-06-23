@@ -11,6 +11,9 @@
 # generated files
 bin/
 gen/
+.gradle
+.idea
+build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -18,3 +21,6 @@ local.properties
 # Eclipse project files
 .classpath
 .project
+
+# IntelliJ project files
+*.iml
