@@ -36,6 +36,7 @@ public class XmlParser {
     private XMLReader getXmlReader() throws ParserConfigurationException, SAXException {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         saxParserFactory.setFeature("http://xml.org/sax/features/namespaces", true);
+        saxParserFactory.setFeature("http://xml.org/sax/features/namespace-prefixes", true);
         SAXParser saxParser = saxParserFactory.newSAXParser();
         return saxParser.getXMLReader();
     }

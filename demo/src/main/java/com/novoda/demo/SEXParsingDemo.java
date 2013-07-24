@@ -1,6 +1,6 @@
 package com.novoda.demo;
 
-import com.novoda.demo.advanced.PodcastExample;
+import com.novoda.demo.advanced.podcast.PodcastExample;
 
 public class SEXParsingDemo {
 

@@ -19,6 +19,11 @@ public class BasicElementFinder<T> implements ElementFinder<T> {
     }
 
     @Override
+    public void find(Element from, String uri, String tag) {
+        parser.parse(from.getChild(uri, tag), this);
+    }
+
+    @Override
     public void onParsed(T body) {
         result = body;
     }
