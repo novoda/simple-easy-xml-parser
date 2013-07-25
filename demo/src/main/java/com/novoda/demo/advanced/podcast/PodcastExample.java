@@ -26,11 +26,15 @@ public class PodcastExample implements Example {
         @Override
         public void onFinish() {
             System.out.println("Found : " + elementFinder.getResult());
-            System.out.println("Title : " + elementFinder.getResult().item.title);
-            System.out.println("Author : " + elementFinder.getResult().item.author);
-            System.out.println("Link : " + elementFinder.getResult().item.link);
-            System.out.println("Itunes Duration : " + elementFinder.getResult().item.itunesDuration);
-            System.out.println("Itunes Image : " + elementFinder.getResult().item.image);
+            for (PodcastItem podcastItem : elementFinder.getResult().podcastItems) {
+                System.out.println("Title : " + podcastItem.title);
+                System.out.println("Author : " + podcastItem.author);
+                System.out.println("Link : " + podcastItem.link);
+                System.out.println("Itunes Duration : " + podcastItem.itunesDuration);
+                System.out.println("Itunes Image : " + podcastItem.image);
+                System.out.println("");
+                System.out.println("");
+            }
         }
     };
 

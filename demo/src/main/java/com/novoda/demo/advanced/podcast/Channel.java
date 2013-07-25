@@ -1,11 +1,12 @@
 package com.novoda.demo.advanced.podcast;
 
+import java.util.List;
+
 class Channel {
 
-    public final PodcastItem item;
+    public final List<PodcastItem> podcastItems;
 
-    public Channel(PodcastItem item) {
-
-        this.item = item;
+    public Channel(List<PodcastItem> item) {
+        this.podcastItems = item;
     }
 }

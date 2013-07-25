@@ -7,6 +7,9 @@ import com.novoda.sexp.finder.ElementFinderFactory;
 import com.novoda.sexp.parser.ParseWatcher;
 import com.novoda.sexp.parser.Parser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.xml.sax.Attributes;
 
 public class PodcastChannelParser implements Parser<Channel> {
@@ -18,8 +21,15 @@ public class PodcastChannelParser implements Parser<Channel> {
     private ParseWatcher<Channel> listener;
 
     public PodcastChannelParser(ElementFinderFactory factory) {
-        this.podcastItemFinder = factory.getTypeFinder(new PodcastItemParser(factory));
+        this.podcastItemFinder = factory.getListElementFinder(new PodcastItemParser(factory), parseWatcher);
     }
+
+    private final ParseWatcher<PodcastItem> parseWatcher = new ParseWatcher<PodcastItem>() {
+        @Override
+        public void onParsed(PodcastItem item) {
+            channelHolder.item.add(item);
+        }
+    };
 
     @Override
     public void parse(Element element, final ParseWatcher<Channel> listener) {
@@ -37,14 +47,12 @@ public class PodcastChannelParser implements Parser<Channel> {
 
         @Override
         public void end() {
-            channelHolder.item = podcastItemFinder.getResult();
-
             listener.onParsed(channelHolder.asChannel());
         }
     };
 
     private static class ChannelHolder {
-        private PodcastItem item;
+        private final List<PodcastItem> item = new ArrayList<PodcastItem>();
 
         public Channel asChannel() {
             return new Channel(item);
