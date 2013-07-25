@@ -1,13 +1,16 @@
 package com.novoda.demo;
 
 import com.novoda.demo.advanced.podcast.PodcastExample;
+import com.novoda.demo.onetag.OneTagExample;
+import com.novoda.demo.simple.SimpleExample;
+import com.novoda.demo.team.TeamExample;
 
 public class SEXParsingDemo {
 
     public static void main(String[] args) {
-//        executeAndLog(new OneTagExample());
-//        executeAndLog(new SimpleExample());
-//        executeAndLog(new TeamExample());
+        executeAndLog(new OneTagExample());
+        executeAndLog(new SimpleExample());
+        executeAndLog(new TeamExample());
         executeAndLog(new PodcastExample());
     }
 

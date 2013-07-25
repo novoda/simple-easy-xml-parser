@@ -1,12 +1,16 @@
 package com.novoda.demo.advanced.podcast;
 
 import com.novoda.demo.Example;
+import com.novoda.demo.advanced.podcast.parser.PodcastChannelParser;
+import com.novoda.demo.advanced.podcast.pojo.Channel;
 import com.novoda.sexp.Instigator;
 import com.novoda.sexp.SimpleEasyXmlParser;
 import com.novoda.sexp.SimpleTagInstigator;
 import com.novoda.sexp.finder.ElementFinder;
 import com.novoda.sexp.finder.ElementFinderFactory;
 import com.novoda.sexp.parser.ParseFinishWatcher;
+
+import static com.novoda.demo.advanced.podcast.PodcastExampleHelper.*;
 
 public class PodcastExample implements Example {
 
@@ -19,22 +23,20 @@ public class PodcastExample implements Example {
         elementFinder = factory.getTypeFinder(new PodcastChannelParser(factory));
 
         Instigator instigator = new PodcastInstigator(elementFinder, finishWatcher);
-        SimpleEasyXmlParser.parse(PodcastXmlHelper.SINGLE_PODCAST_ITEM, instigator);
+        SimpleEasyXmlParser.parse(PodcastExampleHelper.SINGLE_PODCAST_ITEM, instigator);
     }
 
     private ParseFinishWatcher finishWatcher = new ParseFinishWatcher() {
         @Override
         public void onFinish() {
-            System.out.println("Found : " + elementFinder.getResult());
-            for (PodcastItem podcastItem : elementFinder.getResult().podcastItems) {
-                System.out.println("Title : " + podcastItem.title);
-                System.out.println("Author : " + podcastItem.author);
-                System.out.println("Link : " + podcastItem.link);
-                System.out.println("Itunes Duration : " + podcastItem.itunesDuration);
-                System.out.println("Itunes Image : " + podcastItem.image);
-                System.out.println("");
-                System.out.println("");
-            }
+            Channel channel = elementFinder.getResult();
+
+            printChannelDetails(channel);
+            printChannelImage(channel.image);
+
+            printSpace();
+
+            printAllPodcastItems(channel.podcastItems);
         }
     };
 
