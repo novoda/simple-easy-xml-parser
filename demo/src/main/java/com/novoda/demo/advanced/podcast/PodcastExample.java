@@ -10,13 +10,13 @@ import com.novoda.sexp.parser.ParseFinishWatcher;
 
 public class PodcastExample implements Example {
 
-    private static ElementFinder<PodcastItem> elementFinder;
+    private static ElementFinder<Channel> elementFinder;
 
     @Override
     public void execute() {
         ElementFinderFactory factory = SimpleEasyXmlParser.getElementFinderFactory();
 
-        elementFinder = factory.getTypeFinder(new PodcastItemParser(factory));
+        elementFinder = factory.getTypeFinder(new PodcastChannelParser(factory));
 
         Instigator instigator = new PodcastInstigator(elementFinder, finishWatcher);
         SimpleEasyXmlParser.parse(PodcastXmlHelper.SINGLE_PODCAST_ITEM, instigator);
@@ -26,18 +26,18 @@ public class PodcastExample implements Example {
         @Override
         public void onFinish() {
             System.out.println("Found : " + elementFinder.getResult());
-            System.out.println("Title : " + elementFinder.getResult().title);
-            System.out.println("Author : " + elementFinder.getResult().author);
-            System.out.println("Link : " + elementFinder.getResult().link);
-            System.out.println("Itunes Duration : " + elementFinder.getResult().itunesDuration);
-            System.out.println("Itunes Image : " + elementFinder.getResult().image);
+            System.out.println("Title : " + elementFinder.getResult().item.title);
+            System.out.println("Author : " + elementFinder.getResult().item.author);
+            System.out.println("Link : " + elementFinder.getResult().item.link);
+            System.out.println("Itunes Duration : " + elementFinder.getResult().item.itunesDuration);
+            System.out.println("Itunes Image : " + elementFinder.getResult().item.image);
         }
     };
 
     public static class PodcastInstigator extends SimpleTagInstigator {
 
         public PodcastInstigator(ElementFinder<?> elementFinder, ParseFinishWatcher parseFinishWatcher) {
-            super(elementFinder, "item", parseFinishWatcher);
+            super(elementFinder, "channel", parseFinishWatcher);
         }
 
         @Override
