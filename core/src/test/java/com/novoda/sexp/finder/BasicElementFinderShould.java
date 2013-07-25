@@ -37,6 +37,16 @@ public class BasicElementFinderShould {
     }
 
     @Test
+    public void get_child_elements_using_namspace_when_a_namespace_is_provided() throws Exception {
+        String tag = "tag";
+        String namespace = "namespace";
+
+        elementCreator.find(mockElement, namespace, tag);
+
+        verify(mockElement).getChild(namespace, tag);
+    }
+
+    @Test
     public void create_a_result_when_parsing_finished() throws Exception {
         String result = "result";
 
