@@ -1,5 +1,17 @@
 apply plugin: 'java'
 
+version = '1.0.1-alpha'
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    testCompile group: 'com.squareup', name: 'fest-android', version: '1.0.+'
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.+'
+}
+
+jar {
+    manifest.attributes provider: 'Novoda'
+}
+
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier 'sources'
     from sourceSets.main.allSource
@@ -13,4 +25,14 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives sourcesJar
     archives javadocJar
+}
+
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://home/adam/public-mvn-repo/releases")
+        }
+    }
 }
