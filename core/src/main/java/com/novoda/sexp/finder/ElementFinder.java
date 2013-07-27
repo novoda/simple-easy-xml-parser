@@ -12,4 +12,6 @@ public interface ElementFinder<R> extends ParseWatcher<R> {
     void onParsed(R item);
 
     R getResult();
+
+    R requireResult();
 }

@@ -49,7 +49,7 @@ public class ListElementFinderShould {
 
     @Test(expected = UnsupportedOperationException.class)
     public void notSupportGetResult_asListCreatorWillCallbackAfterEveryListItemIsParsed() throws Exception {
-        elementCreator.getResult();
+        elementCreator.requireResult();
     }
 
 }
