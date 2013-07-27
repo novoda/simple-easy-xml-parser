@@ -28,7 +28,7 @@ public class SimpleExample implements Example {
     private ParseFinishWatcher finishWatcher = new ParseFinishWatcher() {
         @Override
         public void onFinish() {
-            System.out.println("Found : " + elementFinder.requireResult());
+            System.out.println("Found : " + elementFinder.getResultOrThrow());
         }
     };
 

@@ -13,5 +13,5 @@ public interface ElementFinder<R> extends ParseWatcher<R> {
 
     R getResult();
 
-    R requireResult();
+    R getResultOrThrow();
 }

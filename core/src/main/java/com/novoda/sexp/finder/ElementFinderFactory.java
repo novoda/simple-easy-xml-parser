@@ -17,7 +17,7 @@ import java.util.List;
  * <pre>
  * {@code ElementFinder finder = getStringFinder();
  * finder.find(XML, "myTag");
- * String name = finder.requireResult();
+ * String name = finder.getResultOrThrow();
  * }
  * </pre>
  */
@@ -76,7 +76,7 @@ public class ElementFinderFactory {
      *
      * ElementFinder<T> finder = getListFinder("name", marshallerOfT);
      * finder.find(element, "names");
-     * List<T> names = finder.requireResult();
+     * List<T> names = finder.getResultOrThrow();
      * }
      * </pre>
      *

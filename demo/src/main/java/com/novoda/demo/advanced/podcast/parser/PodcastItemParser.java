@@ -61,11 +61,11 @@ public class PodcastItemParser implements Parser<PodcastItem> {
 
         @Override
         public void end() {
-            itemHolder.title = titleFinder.requireResult();
-            itemHolder.author = authorFinder.requireResult();
-            itemHolder.link = linkFinder.requireResult();
-            itemHolder.image = itunesImageFinder.requireResult();
-            itemHolder.itunesDuration = itunesDurationFinder.requireResult();
+            itemHolder.title = titleFinder.getResultOrThrow();
+            itemHolder.author = authorFinder.getResultOrThrow();
+            itemHolder.link = linkFinder.getResultOrThrow();
+            itemHolder.image = itunesImageFinder.getResultOrThrow();
+            itemHolder.itunesDuration = itunesDurationFinder.getResultOrThrow();
 
             listener.onParsed(itemHolder.asItem());
         }

@@ -34,7 +34,7 @@ public class BasicElementFinder<T> implements ElementFinder<T> {
     }
 
     @Override
-    public T requireResult() {
+    public T getResultOrThrow() {
         validateResult();
         return result;
     }

@@ -36,7 +36,7 @@ public class ListElementFinder<T> implements ElementFinder<T> {
     }
 
     @Override
-    public T requireResult() {
+    public T getResultOrThrow() {
         throw new UnsupportedOperationException("Has a listener to pass each item as parsed, so there is no result.");
     }
 
