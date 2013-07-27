@@ -24,7 +24,7 @@ public class OneTagExample implements Example {
     private ParseFinishWatcher finishWatcher = new ParseFinishWatcher() {
         @Override
         public void onFinish() {
-            System.out.println("Found : " + elementFinder.getResult());
+            System.out.println("Found : " + elementFinder.getResultOrThrow());
         }
     };
 

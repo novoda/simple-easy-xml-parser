@@ -29,7 +29,7 @@ public class PodcastExample implements Example {
     private ParseFinishWatcher finishWatcher = new ParseFinishWatcher() {
         @Override
         public void onFinish() {
-            Channel channel = elementFinder.getResult();
+            Channel channel = elementFinder.getResultOrThrow();
 
             printChannelDetails(channel);
             printChannelImage(channel.image);

@@ -54,11 +54,11 @@ public class ChannelImageParser implements Parser<ChannelImage> {
 
         @Override
         public void end() {
-            imageHolder.title = titleFinder.getResult();
-            imageHolder.link = linkFinder.getResult();
-            imageHolder.url = urlFinder.getResult();
-            imageHolder.width = widthFinder.getResult();
-            imageHolder.height = heightFinder.getResult();
+            imageHolder.title = titleFinder.getResultOrThrow();
+            imageHolder.link = linkFinder.getResultOrThrow();
+            imageHolder.url = urlFinder.getResultOrThrow();
+            imageHolder.width = widthFinder.getResultOrThrow();
+            imageHolder.height = heightFinder.getResultOrThrow();
 
             listener.onParsed(imageHolder.asImage());
         }
