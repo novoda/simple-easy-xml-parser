@@ -55,7 +55,7 @@ public class BasicElementFinderShould {
         assertThat(elementCreator.getResultOrThrow()).isEqualTo(result);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = BasicElementFinder.ResultNotFoundException.class)
     public void throw_exception_when_result_has_not_been_parsed_and_a_required_result_is_asked_for() throws Exception {
         elementCreator.getResultOrThrow();
     }

@@ -11,6 +11,7 @@ public class BasicElementFinder<T> implements ElementFinder<T> {
 
     public BasicElementFinder(Parser<T> parser) {
         this.parser = parser;
+        this.result = null;
     }
 
     @Override
@@ -41,7 +42,13 @@ public class BasicElementFinder<T> implements ElementFinder<T> {
 
     private void validateResult() {
         if (result == null) {
-            throw new NullPointerException("Did you call find() with a valid tag and/or wait for the result to be parsed?");
+            throw new ResultNotFoundException();
+        }
+    }
+
+    public static class ResultNotFoundException extends RuntimeException {
+        public ResultNotFoundException() {
+            super("Did you call find() with a valid tag and/or wait for the result to be parsed?");
         }
     }
 }
