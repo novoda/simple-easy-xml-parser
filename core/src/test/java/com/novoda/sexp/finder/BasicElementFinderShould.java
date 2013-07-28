@@ -52,12 +52,19 @@ public class BasicElementFinderShould {
 
         elementCreator.onParsed(result);
 
-        assertThat(elementCreator.getResult()).isEqualTo(result);
+        assertThat(elementCreator.getResultOrThrow()).isEqualTo(result);
     }
 
     @Test(expected = NullPointerException.class)
-    public void throw_exception_when_result_has_not_been_parsed_and_result_is_asked_for() throws Exception {
-        elementCreator.getResult();
+    public void throw_exception_when_result_has_not_been_parsed_and_a_required_result_is_asked_for() throws Exception {
+        elementCreator.getResultOrThrow();
+    }
+
+    @Test
+    public void allow_null_results_when_get_result_is_used() throws Exception {
+        Object result = elementCreator.getResult();
+
+        assertThat(result).isNull();
     }
 
 }
