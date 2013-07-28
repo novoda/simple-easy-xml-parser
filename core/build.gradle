@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 group = 'com.novoda.sexp'
-version = '1.0.1-alpha'
+version = '1.0.2-alpha'
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.+'
