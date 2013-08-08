@@ -4,8 +4,5 @@ subprojects {
         maven {
             url "https://oss.sonatype.org/content/repositories/snapshots"
         }
-        maven {
-            url "https://github.com/novoda/public-mvn-repo/raw/master/releases"
-        }
     }
 }

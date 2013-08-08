@@ -1,0 +1,111 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+group = 'com.novoda'
+version = '1.0.2'
+
+def isDevBuild
+def isCiBuild
+def isReleaseBuild
+def sonatypeRepositoryUrl
+
+if (hasProperty("release")) {
+    isReleaseBuild = true
+    sonatypeRepositoryUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+} else if (hasProperty("ci")) {
+    isCiBuild = true
+    version += "-SNAPSHOT"
+    sonatypeRepositoryUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+} else {
+    isDevBuild = true
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    testCompile group: 'com.squareup', name: 'fest-android', version: '1.0.+'
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.+'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives jar
+    archives sourcesJar
+    archives javadocJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        if (isDevBuild) {
+            mavenLocal()
+        } else {
+            mavenDeployer {
+
+                if (isReleaseBuild) {
+                    beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+                }
+
+                repository(url: sonatypeRepositoryUrl) {
+                    authentication(userName: sonatypeUsername, password: sonatypePassword)
+                }
+
+                pom.project {
+                    name 'sexp'
+                    packaging 'jar'
+                    description 'sax parser'
+                    url 'http://novoda.github.com/SimpleEasyXmlParser'
+
+                    scm {
+                        url 'scm:git@github.com:novoda/SimpleEasyXmlParser.git'
+                        connection 'scm:git@github.com:novoda/SimpleEasyXmlParser.git'
+                        developerConnection 'scm:git@github.com:novoda/SimpleEasyXmlParser.git'
+                    }
+
+                    licenses {
+                        license {
+                            name 'The Apache Software License, Version 2.0'
+                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                            distribution 'repo'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'ouchadam'
+                            name 'Adam Brown'
+                        }
+                        developer {
+                            id 'blundell'
+                            name 'Paul Blundell'
+                        }
+                        developer {
+                            id 'charroch'
+                            name 'Carl Harroch'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
