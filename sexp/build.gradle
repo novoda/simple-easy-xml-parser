@@ -51,7 +51,10 @@ artifacts {
     archives javadocJar
 }
 
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
 signing {
+    required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
 }
 
@@ -62,9 +65,7 @@ uploadArchives {
         } else {
             mavenDeployer {
 
-                if (isReleaseBuild) {
-                    beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-                }
+                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
                 repository(url: sonatypeRepositoryUrl) {
                     authentication(userName: sonatypeUsername, password: sonatypePassword)
