@@ -23,8 +23,8 @@ public class SimpleEasyXmlParser {
     }
 
     public static void parse(InputStream xml, Instigator instigator) {
-        String rootTag = instigator.getRootTag();
-        RootElement rootElement = new RootElement(rootTag);
+        RootTag rootTag = instigator.getRootTag();
+        RootElement rootElement = new RootElement(rootTag.getNamespace(), rootTag.getTag());
         rootElement.setEndElementListener(instigator);
         instigator.create(rootElement);
         XmlParser xmlParser = new XmlParser();
