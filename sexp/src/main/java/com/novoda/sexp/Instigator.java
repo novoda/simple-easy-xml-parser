@@ -10,7 +10,7 @@ public interface Instigator extends EndElementListener {
     /**
      * @return The root tag of your XML file
      */
-    String getRootTag();
+    RootTag getRootTag();
 
     /**
      * This is where you create the 'tree' of

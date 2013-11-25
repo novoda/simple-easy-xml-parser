@@ -4,13 +4,17 @@ import com.novoda.demo.Example;
 import com.novoda.demo.advanced.podcast.parser.PodcastChannelParser;
 import com.novoda.demo.advanced.podcast.pojo.Channel;
 import com.novoda.sexp.Instigator;
+import com.novoda.sexp.RootTag;
 import com.novoda.sexp.SimpleEasyXmlParser;
 import com.novoda.sexp.SimpleTagInstigator;
 import com.novoda.sexp.finder.ElementFinder;
 import com.novoda.sexp.finder.ElementFinderFactory;
 import com.novoda.sexp.parser.ParseFinishWatcher;
 
-import static com.novoda.demo.advanced.podcast.PodcastExampleHelper.*;
+import static com.novoda.demo.advanced.podcast.PodcastExampleHelper.printAllPodcastItems;
+import static com.novoda.demo.advanced.podcast.PodcastExampleHelper.printChannelDetails;
+import static com.novoda.demo.advanced.podcast.PodcastExampleHelper.printChannelImage;
+import static com.novoda.demo.advanced.podcast.PodcastExampleHelper.printSpace;
 
 public class PodcastExample implements Example {
 
@@ -47,8 +51,8 @@ public class PodcastExample implements Example {
         }
 
         @Override
-        public String getRootTag() {
-            return "rss";
+        public RootTag getRootTag() {
+            return RootTag.create("rss");
         }
     }
 }
