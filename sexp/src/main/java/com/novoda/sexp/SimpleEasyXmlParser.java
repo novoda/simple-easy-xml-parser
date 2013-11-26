@@ -6,6 +6,7 @@ import com.novoda.sexp.finder.ElementFinderFactory;
 import org.xml.sax.XMLReader;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
 public class SimpleEasyXmlParser {
@@ -26,7 +27,7 @@ public class SimpleEasyXmlParser {
         parse(new ByteArrayInputStream(xml.getBytes()), instigator, xmlReader);
     }
 
-    private static void parse(ByteArrayInputStream xml, Instigator instigator, XMLReader xmlReader) {
+    public static void parse(InputStream xml, Instigator instigator, XMLReader xmlReader) {
         RootTag rootTag = instigator.getRootTag();
         RootElement rootElement = new RootElement(rootTag.getNamespace(), rootTag.getTag());
         rootElement.setEndElementListener(instigator);
