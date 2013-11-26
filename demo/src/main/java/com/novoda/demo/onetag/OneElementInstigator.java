@@ -4,6 +4,7 @@ import com.novoda.sax.EndTextElementListener;
 import com.novoda.sax.RootElement;
 
 import com.novoda.sexp.Instigator;
+import com.novoda.sexp.RootTag;
 import com.novoda.sexp.finder.ElementFinder;
 import com.novoda.sexp.parser.ParseFinishWatcher;
 
@@ -24,8 +25,8 @@ public class OneElementInstigator implements Instigator {
     }
 
     @Override
-    public String getRootTag() {
-        return elementTag;
+    public RootTag getRootTag() {
+        return RootTag.create(elementTag);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.novoda.demo.team;
 
 import com.novoda.demo.Example;
 import com.novoda.sexp.Instigator;
+import com.novoda.sexp.RootTag;
 import com.novoda.sexp.SimpleEasyXmlParser;
 import com.novoda.sexp.SimpleTagInstigator;
 import com.novoda.sexp.finder.ElementFinder;
@@ -52,8 +53,8 @@ public class TeamExample implements Example {
         }
 
         @Override
-        public String getRootTag() {
-            return "novoda";
+        public RootTag getRootTag() {
+            return RootTag.create("novoda");
         }
     }
 
