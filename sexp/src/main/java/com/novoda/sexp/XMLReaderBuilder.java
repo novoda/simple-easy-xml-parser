@@ -14,7 +14,11 @@ public class XMLReaderBuilder {
     private final SAXParserFactory saxParserFactory;
 
     public XMLReaderBuilder() {
-        saxParserFactory = SAXParserFactory.newInstance();
+        this(SAXParserFactory.newInstance());
+    }
+
+    XMLReaderBuilder(SAXParserFactory saxParserFactory) {
+        this.saxParserFactory = saxParserFactory;
     }
 
     public XMLReaderBuilder withFeature(String name, boolean value) throws XMLReaderCreationException {
