@@ -11,14 +11,13 @@ import org.xml.sax.XMLReader;
 
 public class XmlParser {
 
-    public void parse(String xml, ContentHandler contentHandler, XMLReader xmlReader) {
-        parse(new ByteArrayInputStream(xml.getBytes()), contentHandler, xmlReader);
+    public void parse(String xml, XMLReader xmlReader) {
+        parse(new ByteArrayInputStream(xml.getBytes()), xmlReader);
     }
 
-    public void parse(InputStream xml, ContentHandler contentHandler, XMLReader xmlReader) {
-        xmlReader.setContentHandler(contentHandler);
-        InputSource input = new InputSource(xml);
+    public void parse(InputStream xml, XMLReader xmlReader) {
         try {
+            InputSource input = new InputSource(xml);
             xmlReader.parse(input);
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -32,8 +32,9 @@ public class SimpleEasyXmlParser {
         RootElement rootElement = new RootElement(rootTag.getNamespace(), rootTag.getTag());
         rootElement.setEndElementListener(instigator);
         instigator.create(rootElement);
+        xmlReader.setContentHandler(rootElement.getContentHandler());
         XmlParser xmlParser = new XmlParser();
-        xmlParser.parse(xml, rootElement.getContentHandler(), xmlReader);
+        xmlParser.parse(xml, xmlReader);
     }
 
     private static XMLReader getDefaultSEXPXMLReader() {
