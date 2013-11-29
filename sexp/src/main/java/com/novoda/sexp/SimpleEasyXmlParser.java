@@ -39,7 +39,7 @@ public class SimpleEasyXmlParser {
 
     private static XMLReader getDefaultSEXPXMLReader() {
         try {
-            return SEXPXmlReaderFactory.getDefault();
+            return new XMLReaderBuilder().setNamespace(true).build();
         } catch (XMLReaderBuilder.XMLReaderCreationException e) {
             throw new RuntimeException(e);
         }

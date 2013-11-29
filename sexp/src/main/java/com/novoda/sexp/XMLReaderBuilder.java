@@ -8,6 +8,7 @@ import org.xml.sax.XMLReader;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.validation.Schema;
 
 public class XMLReaderBuilder {
 
@@ -31,6 +32,31 @@ public class XMLReaderBuilder {
         } catch (SAXNotSupportedException e) {
             throw new XMLReaderCreationException(e);
         }
+        return this;
+    }
+
+    public XMLReaderBuilder setNamespace(boolean value) throws XMLReaderCreationException {
+        withFeature("http://xml.org/sax/features/namespaces", value);
+        return this;
+    }
+
+    public XMLReaderBuilder setAttributeNamespace(boolean value) throws XMLReaderCreationException {
+        withFeature("http://xml.org/sax/features/namespace-prefixes", value);
+        return this;
+    }
+
+    public XMLReaderBuilder setNamespaceAware(boolean value) {
+        saxParserFactory.setNamespaceAware(value);
+        return this;
+    }
+
+    public XMLReaderBuilder setXIncludeAware(boolean value) {
+        saxParserFactory.setXIncludeAware(value);
+        return this;
+    }
+
+    public XMLReaderBuilder setSchema(Schema schema) {
+        saxParserFactory.setSchema(schema);
         return this;
     }
 
