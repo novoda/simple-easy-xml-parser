@@ -12,6 +12,9 @@ import javax.xml.validation.Schema;
 
 public class XMLReaderBuilder {
 
+    private static final String FEATURE_NAMESPACE = "http://xml.org/sax/features/namespaces";
+    private static final String FEATURE_NAMESPACE_PREFIX = "http://xml.org/sax/features/namespace-prefixes";
+
     private final SAXParserFactory saxParserFactory;
 
     public XMLReaderBuilder() {
@@ -36,12 +39,12 @@ public class XMLReaderBuilder {
     }
 
     public XMLReaderBuilder setNamespace(boolean value) throws XMLReaderCreationException {
-        withFeature("http://xml.org/sax/features/namespaces", value);
+        withFeature(FEATURE_NAMESPACE, value);
         return this;
     }
 
     public XMLReaderBuilder setAttributeNamespace(boolean value) throws XMLReaderCreationException {
-        withFeature("http://xml.org/sax/features/namespace-prefixes", value);
+        withFeature(FEATURE_NAMESPACE_PREFIX, value);
         return this;
     }
 
