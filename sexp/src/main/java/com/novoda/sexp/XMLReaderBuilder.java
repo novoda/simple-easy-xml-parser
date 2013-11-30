@@ -25,6 +25,15 @@ public class XMLReaderBuilder {
         this.saxParserFactory = saxParserFactory;
     }
 
+    /**
+     * Sets the particular feature in the underlying implementation of org.xml.sax.XMLReader.
+     *
+     * @param name The name of the feature to be set.
+     * @param value The value of the feature to be set.
+     * @return XMLReaderBuilder
+     * @throws XMLReaderCreationException
+     */
+
     public XMLReaderBuilder withFeature(String name, boolean value) throws XMLReaderCreationException {
         try {
             saxParserFactory.setFeature(name, value);
@@ -38,31 +47,75 @@ public class XMLReaderBuilder {
         return this;
     }
 
-    public XMLReaderBuilder setNamespace(boolean value) throws XMLReaderCreationException {
-        withFeature(FEATURE_NAMESPACE, value);
+
+    /**
+     * Perform namespace processing: prefixes will be stripped off element and attribute names and
+     * replaced with the corresponding namespace URIs. By default, the two will simply be concatenated,
+     * but the namespace-sep core property allows the application to specify a delimiter string for
+     * separating the URI part and the local part.
+     *
+     * @param allowProcessing enables/disables the processing
+     * @return XMLReaderBuilder
+     * @throws XMLReaderCreationException
+     */
+    public XMLReaderBuilder allowNamespaceProcessing(boolean allowProcessing) throws XMLReaderCreationException {
+        withFeature(FEATURE_NAMESPACE, allowProcessing);
         return this;
     }
 
-    public XMLReaderBuilder setAttributeNamespace(boolean value) throws XMLReaderCreationException {
-        withFeature(FEATURE_NAMESPACE_PREFIX, value);
+    /**
+     * Report the original prefixed names and attributes used for namespace declarations.
+     *
+     * @param allowProcessing enables/disables the processing
+     * @return XMLReaderBuilder
+     * @throws XMLReaderCreationException
+     */
+    public XMLReaderBuilder allowAttributeNamespaceProcessing(boolean allowProcessing) throws XMLReaderCreationException {
+        withFeature(FEATURE_NAMESPACE_PREFIX, allowProcessing);
         return this;
     }
 
-    public XMLReaderBuilder setNamespaceAware(boolean value) {
-        saxParserFactory.setNamespaceAware(value);
+    /**
+     * Specifies that the parser produced by this code will provide support for XML namespaces.
+     *
+     * @param isAware enables/disables the processing
+     * @return XMLReaderBuilder
+     */
+    public XMLReaderBuilder setNamespaceAware(boolean isAware) {
+        saxParserFactory.setNamespaceAware(isAware);
         return this;
     }
 
-    public XMLReaderBuilder setXIncludeAware(boolean value) {
-        saxParserFactory.setXIncludeAware(value);
+    /**
+     * Set state of XInclude processing.
+     *
+     * @param includeAware
+     * @return XMLReaderBuilder
+     */
+    public XMLReaderBuilder setXIncludeAware(boolean includeAware) {
+        saxParserFactory.setXIncludeAware(includeAware);
         return this;
     }
 
+    /**
+     * Set the {@link Schema} to be used by parsers created
+     * from this factory
+     *
+     * @param schema
+     * @return XMLReaderBuilder
+     */
     public XMLReaderBuilder setSchema(Schema schema) {
         saxParserFactory.setSchema(schema);
         return this;
     }
 
+    /**
+     *
+     * Create the XMLReader with the specified options
+     *
+     * @return XMLReader
+     * @throws XMLReaderCreationException
+     */
     public XMLReader build() throws XMLReaderCreationException {
         try {
             SAXParser saxParser = saxParserFactory.newSAXParser();
