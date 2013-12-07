@@ -26,7 +26,7 @@ public class XMLReaderBuilder {
     }
 
     /**
-     * Sets the particular feature in the underlying implementation of org.xml.sax.XMLReader.
+     * Sets the particular feature in the underlying implementation of org.xml.sax.XMLReader. http://xerces.apache.org/xerces2-j/features.html
      *
      * @param name The name of the feature to be set.
      * @param value The value of the feature to be set.
@@ -110,7 +110,6 @@ public class XMLReaderBuilder {
     }
 
     /**
-     *
      * Create the XMLReader with the specified options
      *
      * @return XMLReader
