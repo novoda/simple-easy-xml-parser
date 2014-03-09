@@ -5,10 +5,16 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import android.util.Log;
+
 /**
  * Created by Ianic on 3/3/14.
  */
 public class SEXPQueue {
+	
+    private static final String TAG = SEXPQueue.class.getSimpleName();
+    private static final boolean DEBUG = SEXPBaseService.DEBUG;
+	
     private static int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
     private static final int KEEP_ALIVE_TIME = 1;
     private static final TimeUnit KEEP_ALIVE_TIME_UNIT;
@@ -26,6 +32,9 @@ public class SEXPQueue {
     }
 
     private SEXPQueue (){
+    	if(DEBUG){
+    		Log.d(TAG, "Creating Queue");
+    	}
         mWorkQueue = new LinkedBlockingQueue<Runnable>();
         mThreadPool = new ThreadPoolExecutor(
                 NUMBER_OF_CORES,       // Initial pool size
@@ -40,6 +49,9 @@ public class SEXPQueue {
     }
 
     public void addToQueue(SEXPTask task){
+    	if(DEBUG){
+    		Log.d(TAG, "Adding task to queue");
+    	}
         mThreadPool.execute(task);
     }
 
@@ -70,16 +82,17 @@ public class SEXPQueue {
     }
 
     public void cancelTaskByType(int id){
-        int maskApiId = SEXPTask.MASK_API_ID;
-        int type = maskApiId & id;
+        int type = SEXPTask.getType(id);
 
         SEXPTask[] runnableArray = new SEXPTask[mWorkQueue.size()];
         mWorkQueue.toArray(runnableArray);
-
+        if (DEBUG){
+            Log.d(TAG, "Cancelling taks by type: " + type + ". Queue size: " + mWorkQueue.size());
+        }
         synchronized (this) {
 
             for (SEXPTask task : runnableArray) {
-                if ( task.getType() == type ){
+                if ( SEXPTask.getType(task.getId()) == type ){
                     Thread thread = task.getCurrentThread();
                     // if the Thread exists, post an interrupt to it
                     if (null != thread) {
@@ -91,9 +104,8 @@ public class SEXPQueue {
         }
     }
 
-    public void removeDownload(SEXPTask sexpTask, int id) {
+    public void removeTask(SEXPTask sexpTask, int id) {
 
-        // If the Thread object still exists and the download matches the specified URL
         if (sexpTask != null && sexpTask.getId() == id) {
 
             /*
@@ -101,7 +113,7 @@ public class SEXPQueue {
              */
             synchronized (this) {
 
-                // Gets the Thread that the downloader task is running on
+                // Gets the Thread that the task is running on
                 Thread thread = sexpTask.getCurrentThread();
 
                 // If the Thread exists, posts an interrupt to it

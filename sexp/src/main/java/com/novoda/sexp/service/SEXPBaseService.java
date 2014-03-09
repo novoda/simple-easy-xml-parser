@@ -9,9 +9,10 @@ import android.util.Log;
 
 public abstract class SEXPBaseService extends Service {
 
-    private static boolean DEBUG = true;
+    public static boolean DEBUG = true;
     private static final String TAG = SEXPBaseService.class.getSimpleName();
     public static final String EXTRA_ID_API = "com.novoda.sexp.service.EXTRA_ID_API";
+    public static final String EXTRA_CANCEL_TASK_TYPE_ID = "com.novoda.sexp.service.EXTRA_CANCEL_TASK_ID";
 
     protected SEXPQueue mQueue;
 
@@ -20,6 +21,9 @@ public abstract class SEXPBaseService extends Service {
         super.onCreate();
 
         mQueue = SEXPQueue.getInstance();
+        if(DEBUG){
+        	Log.d(TAG, "OnCreate");
+        }
     }
 
     @Override
@@ -29,6 +33,10 @@ public abstract class SEXPBaseService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+    	if(DEBUG){
+        	Log.d(TAG, "OnStartCommand");
+        }
+    	
         if (intent == null) {
             if (DEBUG) {
                 Log.w(TAG, "onStartCommand() - The intent received is null...");
@@ -49,22 +57,28 @@ public abstract class SEXPBaseService extends Service {
         }
 
         final int idApi = params.getInt(EXTRA_ID_API, -1);
+        final int candelIdApi = params.getInt(EXTRA_CANCEL_TASK_TYPE_ID, -1);
 
-        if (idApi == -1) {
+        if (idApi == -1 && candelIdApi == -1) {
             if (DEBUG) {
                 Log.w(TAG, "onStartCommand() - The idApi is missing from the received intent...");
             }
             return START_NOT_STICKY;
         }
 
-        if (checkParams(idApi, params)) {
+        if (!checkParams(idApi, params)) {
             if (DEBUG) {
                 Log.w(TAG, "onStartCommand() - The service call is missing parameters from the received intent...");
             }
             return START_NOT_STICKY;
         }
 
-        manageApiCall(startId, params, idApi);
+        if( candelIdApi != -1){
+        	manageApiCancel(params, candelIdApi);
+        }
+        
+        manageApiCall(params, idApi);
+        
 
         return START_NOT_STICKY;
     }
@@ -72,10 +86,15 @@ public abstract class SEXPBaseService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        
+    	if(DEBUG){
+    		Log.d(TAG, "Destroying service");
+    	}
 
         mQueue.cancelAll();
     }
 
-    protected abstract void manageApiCall(int startId, Bundle params, int idApi);
+    protected abstract void manageApiCall(Bundle params, int idApi);
+    protected abstract void manageApiCancel(Bundle params, int idApi);
     protected abstract boolean checkParams(int idApi, Bundle params);
 }
