@@ -89,18 +89,23 @@ public class SEXPQueue {
         if (DEBUG){
             Log.d(TAG, "Cancelling taks by type: " + type + ". Queue size: " + mWorkQueue.size());
         }
+    	int i = 0;
         synchronized (this) {
-
             for (SEXPTask task : runnableArray) {
                 if ( SEXPTask.getType(task.getId()) == type ){
                     Thread thread = task.getCurrentThread();
+                    Log.d(TAG,task.getId() + " thread null? " + thread);
                     // if the Thread exists, post an interrupt to it
                     if (null != thread) {
                         thread.interrupt();
+                        i++;
                     }
                 }
 
             }
+        }
+        if (DEBUG){
+            Log.d(TAG, "Cancelled " + i + " tasks.");
         }
     }
 

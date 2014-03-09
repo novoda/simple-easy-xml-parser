@@ -67,6 +67,7 @@ public abstract class SEXPTask implements Runnable {
 
     public void setCurrentThread(Thread thread) {
         synchronized(this) {
+        	Log.d(TAG, "Setting thread of taskId: " + getId()+ " thread: " + thread);
             mCurrentThread = thread;
         }
     }

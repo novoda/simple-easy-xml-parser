@@ -65,20 +65,21 @@ public abstract class SEXPBaseService extends Service {
             }
             return START_NOT_STICKY;
         }
-
-        if (!checkParams(idApi, params)) {
-            if (DEBUG) {
-                Log.w(TAG, "onStartCommand() - The service call is missing parameters from the received intent...");
-            }
-            return START_NOT_STICKY;
-        }
-
+        
         if( candelIdApi != -1){
         	manageApiCancel(params, candelIdApi);
         }
-        
-        manageApiCall(params, idApi);
-        
+
+        if ( idApi != -1 ){
+	        if (!checkParams(idApi, params)) {
+	            if (DEBUG) {
+	                Log.w(TAG, "onStartCommand() - The service call is missing parameters from the received intent...");
+	            }
+	            return START_NOT_STICKY;
+	        }
+	  
+	        manageApiCall(params, idApi);
+        }
 
         return START_NOT_STICKY;
     }
