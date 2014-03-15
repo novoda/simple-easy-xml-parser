@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.demoandroid"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.WithActionBar" >
+        <activity
+            android:name="com.example.demoandroid.MenuActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.demoandroid.onetag.OneTagActivity"
+            android:label="@string/title_activity_one_tag" 
+            android:parentActivityName="com.example.demoandroid.MenuActivity">
+        </activity>
+        <activity
+            android:name="com.example.demoandroid.simple.SimpleExampleActivity"
+            android:label="@string/title_activity_simple_example" 
+            android:parentActivityName="com.example.demoandroid.MenuActivity">
+        </activity>
+        <activity
+            android:name="com.example.demoandroid.team.TeamExampleActivity"
+            android:label="@string/title_activity_team_example" 
+            android:parentActivityName="com.example.demoandroid.MenuActivity">
+        </activity>
+        <activity
+            android:name="com.example.demoandroid.podcast.PodcastExampleActivity"
+            android:label="@string/title_activity_podcast" 
+            android:parentActivityName="com.example.demoandroid.MenuActivity">
+        </activity>
+        <activity
+            android:name="com.example.demoandroid.BaseActivity"
+            android:label="@string/title_activity_base" 
+            android:parentActivityName="com.example.demoandroid.MenuActivity">
+        </activity>
+    </application>
+
+</manifest>

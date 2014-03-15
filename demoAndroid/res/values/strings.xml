@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">demoAndroid</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_one_tag">OneTagActivity</string>
+    <string name="title_activity_simple_example">SimpleExampleActivity</string>
+    <string name="title_activity_team_example">TeamExampleActivity</string>
+    <string name="title_activity_podcast">PodcastActivity</string>
+    <string name="title_activity_base">BaseActivity</string>
+    
+    <string name="parsing_result">Parsing result :</string>
+    
+</resources>
