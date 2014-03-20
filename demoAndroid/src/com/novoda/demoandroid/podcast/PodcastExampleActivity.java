@@ -1,4 +1,4 @@
-package com.example.demoandroid.podcast;
+package com.novoda.demoandroid.podcast;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,11 +6,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.demoandroid.BaseActivity;
-import com.example.demoandroid.ParsingTask;
-import com.example.demoandroid.R;
-import com.example.demoandroid.advanced.podcast.parser.PodcastChannelParser;
-import com.example.demoandroid.podcast.pojo.Channel;
+import com.novoda.demo.advanced.podcast.parser.PodcastChannelParser;
+import com.novoda.demo.advanced.podcast.pojo.Channel;
+import com.novoda.demoandroid.BaseActivity;
+import com.novoda.demoandroid.ParsingTask;
+import com.novoda.demoandroid.R;
 import com.novoda.sexp.Instigator;
 import com.novoda.sexp.RootTag;
 import com.novoda.sexp.SimpleEasyXmlParser;
@@ -20,10 +20,7 @@ import com.novoda.sexp.finder.ElementFinderFactory;
 import com.novoda.sexp.parser.ParseFinishWatcher;
 
 public class PodcastExampleActivity extends BaseActivity {
-	public static final String TITLE = "Podcast Example";
-
 	private static ElementFinder<Channel> elementFinder;
-
 	private TextView parsingResult;
 	private ProgressBar progressBar;
 	private LinearLayout container;
@@ -32,21 +29,16 @@ public class PodcastExampleActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result_parsing);
-		getActionBar().setTitle(TITLE);
 
 		parsingResult = (TextView) findViewById(R.id.tv_result);
 		progressBar = (ProgressBar) findViewById(R.id.pb_oneTag);
 		container = (LinearLayout) findViewById(R.id.ll_oneTag);
 
-		ElementFinderFactory factory = SimpleEasyXmlParser
-				.getElementFinderFactory();
-		elementFinder = factory
-				.getTypeFinder(new PodcastChannelParser(factory));
-		Instigator instigator = new PodcastInstigator(elementFinder,
-				finishWatcher);
+		ElementFinderFactory factory = SimpleEasyXmlParser.getElementFinderFactory();
+		elementFinder = factory.getTypeFinder(new PodcastChannelParser(factory));
+		Instigator instigator = new PodcastInstigator(elementFinder, finishWatcher);
 
-		new Thread(new ParsingTask(PodcastExampleHelper.SINGLE_PODCAST_ITEM,
-				instigator)).start();
+		new ParsingTask(PodcastExampleHelper.SINGLE_PODCAST_ITEM, instigator).execute();
 	}
 
 	private ParseFinishWatcher finishWatcher = new ParseFinishWatcher() {
@@ -55,12 +47,9 @@ public class PodcastExampleActivity extends BaseActivity {
 			Channel channel = elementFinder.getResultOrThrow();
 
 			StringBuilder sb = new StringBuilder();
-			String channelDetails = PodcastExampleHelper
-					.getChannelDetailsString(channel);
-			String channelImage = PodcastExampleHelper
-					.getChannelImageString(channel.image);
-			String podcasts = PodcastExampleHelper
-					.getAllPodcastItemsString(channel.podcastItems);
+			String channelDetails = PodcastExampleHelper.getChannelDetailsString(channel);
+			String channelImage = PodcastExampleHelper.getChannelImageString(channel.image);
+			String podcasts = PodcastExampleHelper.getAllPodcastItemsString(channel.podcastItems);
 			String space = PodcastExampleHelper.getSpace();
 
 			sb.append(channelDetails);

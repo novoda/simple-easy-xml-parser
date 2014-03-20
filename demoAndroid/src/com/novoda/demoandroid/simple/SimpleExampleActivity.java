@@ -1,4 +1,4 @@
-package com.example.demoandroid.onetag;
+package com.novoda.demoandroid.simple;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,20 +6,21 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.demoandroid.BaseActivity;
-import com.example.demoandroid.ParsingTask;
-import com.example.demoandroid.R;
+import com.novoda.demoandroid.BaseActivity;
+import com.novoda.demoandroid.ParsingTask;
+import com.novoda.demoandroid.R;
 import com.novoda.sexp.Instigator;
+import com.novoda.sexp.RootTag;
 import com.novoda.sexp.SimpleEasyXmlParser;
+import com.novoda.sexp.SimpleTagInstigator;
 import com.novoda.sexp.finder.ElementFinder;
 import com.novoda.sexp.finder.ElementFinderFactory;
 import com.novoda.sexp.parser.ParseFinishWatcher;
 
-public class OneTagActivity extends BaseActivity {
-	public static final String TITLE = "One Tag Example";
-
+public class SimpleExampleActivity extends BaseActivity {
 	// language=XML
-	private static final String XML = "<novoda>Hello XML</novoda>";
+	private static final String XML = "<novoda>"
+			+ "<favouriteColour>Blue</favouriteColour>" + "</novoda>";
 	private static ElementFinder<String> elementFinder;
 
 	private TextView parsingResult;
@@ -30,7 +31,6 @@ public class OneTagActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result_parsing);
-		getActionBar().setTitle(TITLE);
 
 		parsingResult = (TextView) findViewById(R.id.tv_result);
 		progressBar = (ProgressBar) findViewById(R.id.pb_oneTag);
@@ -39,10 +39,10 @@ public class OneTagActivity extends BaseActivity {
 		ElementFinderFactory factory = SimpleEasyXmlParser
 				.getElementFinderFactory();
 		elementFinder = factory.getStringFinder();
-		Instigator instigator = new OneElementInstigator(elementFinder,
-				"novoda", finishWatcher);
+		Instigator instigator = new SimpleInstigator(elementFinder,
+				finishWatcher);
 
-		new Thread(new ParsingTask(XML, instigator)).start();
+		new ParsingTask(XML, instigator).execute();
 	}
 
 	private ParseFinishWatcher finishWatcher = new ParseFinishWatcher() {
@@ -56,8 +56,18 @@ public class OneTagActivity extends BaseActivity {
 					progressBar.setVisibility(View.GONE);
 				}
 			});
-
 		}
 	};
 
+	public static class SimpleInstigator extends SimpleTagInstigator {
+
+		public SimpleInstigator(ElementFinder<?> elementFinder, ParseFinishWatcher parseFinishWatcher) {
+			super(elementFinder, "favouriteColour", parseFinishWatcher);
+		}
+
+		@Override
+		public RootTag getRootTag() {
+			return RootTag.create("novoda");
+		}
+	}
 }

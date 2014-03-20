@@ -1,12 +1,10 @@
-package com.example.demoandroid.podcast;
-
-import android.util.StringBuilderPrinter;
-
-import com.example.demoandroid.podcast.pojo.Channel;
-import com.example.demoandroid.podcast.pojo.ChannelImage;
-import com.example.demoandroid.podcast.pojo.PodcastItem;
+package com.novoda.demoandroid.podcast;
 
 import java.util.List;
+
+import com.novoda.demo.advanced.podcast.pojo.Channel;
+import com.novoda.demo.advanced.podcast.pojo.ChannelImage;
+import com.novoda.demo.advanced.podcast.pojo.PodcastItem;
 
 public class PodcastExampleHelper {
 

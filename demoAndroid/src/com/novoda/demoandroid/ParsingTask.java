@@ -1,9 +1,11 @@
-package com.example.demoandroid;
+package com.novoda.demoandroid;
+
+import android.os.AsyncTask;
 
 import com.novoda.sexp.Instigator;
 import com.novoda.sexp.SimpleEasyXmlParser;
 
-public class ParsingTask implements Runnable {
+public class ParsingTask extends AsyncTask<Void, Void, Void> {
 	private String xmlToParse;
 	private Instigator instigator;
 
@@ -21,7 +23,8 @@ public class ParsingTask implements Runnable {
 	}
 
 	@Override
-	public void run() {
+	protected Void doInBackground(Void... params) {
 		SimpleEasyXmlParser.parse(xmlToParse, instigator);
+		return null;
 	}
 }
