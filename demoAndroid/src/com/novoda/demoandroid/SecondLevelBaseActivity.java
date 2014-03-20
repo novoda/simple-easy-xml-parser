@@ -3,7 +3,7 @@ package com.novoda.demoandroid;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class BaseActivity extends Activity {
+public class SecondLevelBaseActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

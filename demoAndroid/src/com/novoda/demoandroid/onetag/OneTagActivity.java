@@ -7,7 +7,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.novoda.demo.onetag.OneElementInstigator;
-import com.novoda.demoandroid.BaseActivity;
+import com.novoda.demoandroid.SecondLevelBaseActivity;
 import com.novoda.demoandroid.ParsingTask;
 import com.novoda.demoandroid.R;
 import com.novoda.sexp.Instigator;
@@ -17,7 +17,7 @@ import com.novoda.sexp.finder.ElementFinderFactory;
 import com.novoda.sexp.parser.ParseFinishWatcher;
 
 
-public class OneTagActivity extends BaseActivity {
+public class OneTagActivity extends SecondLevelBaseActivity {
 	// language=XML
 	private static final String XML = "<novoda>Hello XML</novoda>";
 	private static ElementFinder<String> elementFinder;

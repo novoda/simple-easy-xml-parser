@@ -18,10 +18,9 @@ import com.novoda.demoandroid.podcast.PodcastExampleActivity;
 import com.novoda.demoandroid.simple.SimpleExampleActivity;
 import com.novoda.demoandroid.team.TeamExampleActivity;
 
-public class MenuActivity extends BaseActivity {
-	private int DIVIDER_HEIGHT = 2;
+public class MenuActivity extends Activity {
+	private static final int DIVIDER_HEIGHT = 2;
 	private ListView menu;
-	private List<NavigationItem> items;
 	private Context context;
 
 	@Override
@@ -31,9 +30,7 @@ public class MenuActivity extends BaseActivity {
 		
 		context = this;
 		menu = (ListView) findViewById(R.id.lv_menu);
-		items = new ArrayList<MenuActivity.NavigationItem>();
-		
-		populateNavigationMenu();
+		List<NavigationItem> items = populateNavigationMenu();
 		ArrayAdapter<NavigationItem> adapter;
 		adapter = new ArrayAdapter<NavigationItem>(this, android.R.layout.simple_list_item_1, android.R.id.text1, items);
 
@@ -50,11 +47,13 @@ public class MenuActivity extends BaseActivity {
 		});
 	}
 	
-	private void populateNavigationMenu (){
+	private List<NavigationItem> populateNavigationMenu (){
+		List<NavigationItem> items = new ArrayList<NavigationItem>();
 		items.add(new NavigationItem(OneTagActivity.class, getResources().getString(R.string.title_activity_one_tag)));
 		items.add(new NavigationItem(SimpleExampleActivity.class, getResources().getString(R.string.title_activity_simple_example)));
 		items.add(new NavigationItem(PodcastExampleActivity.class, getResources().getString(R.string.title_activity_podcast)));
 		items.add(new NavigationItem(TeamExampleActivity.class, getResources().getString(R.string.title_activity_team_example)));
+		return items;
 	}
 
 	public static class NavigationItem {

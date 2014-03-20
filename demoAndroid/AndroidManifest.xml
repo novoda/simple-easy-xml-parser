@@ -43,7 +43,7 @@
             android:parentActivityName="com.novoda.demoandroid.MenuActivity">
         </activity>
         <activity
-            android:name="com.novoda.demoandroid.BaseActivity"
+            android:name="com.novoda.demoandroid.SecondLevelBaseActivity"
             android:label="@string/title_activity_base" 
             android:parentActivityName="com.novoda.demoandroid.MenuActivity">
         </activity>
