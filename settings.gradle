@@ -1,2 +1,2 @@
-include "sexp", "demo"
+include "sexp", "demo", "demoAndroid"
 

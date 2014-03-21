@@ -3,9 +3,3 @@ apply plugin: 'java'
 dependencies {
     compile project(':sexp')
 }
-
-jar {
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-
-    manifest.attributes 'Main-Class': 'com.novoda.demo.SEXParsingDemo'
-}
