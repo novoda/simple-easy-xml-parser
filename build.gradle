@@ -1,13 +1,4 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            url "https://oss.sonatype.org/content/repositories/snapshots"
-        }
-    }
-}
-
-allprojects {
+subprojects {
     repositories {
         mavenCentral()
         maven {
