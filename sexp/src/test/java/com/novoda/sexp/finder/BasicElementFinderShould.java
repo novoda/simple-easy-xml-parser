@@ -67,4 +67,13 @@ public class BasicElementFinderShould {
         assertThat(result).isNull();
     }
 
+    @Test
+    public void verifyEmpty_whenParsingEmptyXML() throws Exception {
+        String result = "";
+
+        elementCreator.onParsed(result);
+
+        assertThat(result).isSameAs("");
+    }
+
 }
