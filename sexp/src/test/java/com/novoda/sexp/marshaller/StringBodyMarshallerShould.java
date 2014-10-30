@@ -20,4 +20,9 @@ public class StringBodyMarshallerShould {
 
         assertThat(stringBodyMarshaller.marshall(theInput)).isEqualTo(theInput);
     }
+
+    @Test
+    public void marshallNull() throws Exception {
+        assertThat(stringBodyMarshaller.marshall(null)).isEqualTo(null);
+    }
 }
