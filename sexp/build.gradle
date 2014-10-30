@@ -22,7 +22,7 @@ if (hasProperty("release")) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.6'
+    gradleVersion = '2.1'
 }
 
 repositories {
@@ -31,7 +31,7 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.+'
-    testCompile group: 'com.squareup', name: 'fest-android', version: '1.0.+'
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.+'
 }
 
