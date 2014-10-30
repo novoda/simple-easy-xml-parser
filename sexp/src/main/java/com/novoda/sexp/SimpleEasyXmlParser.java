@@ -19,7 +19,7 @@ public class SimpleEasyXmlParser {
         parse(new ByteArrayInputStream(xml.getBytes(encoding)), instigator, getDefaultSEXPXMLReader());
     }
 
-    public static void parse(String xml, Instigator instigator) {
+    public static void  parse(String xml, Instigator instigator) {
         parse(new ByteArrayInputStream(xml.getBytes()), instigator, getDefaultSEXPXMLReader());
     }
 

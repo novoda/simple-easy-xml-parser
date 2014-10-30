@@ -29,6 +29,23 @@ public class IntegerBodyMarshallerShould {
         integerBodyMarshaller.marshall(invalidInput);
     }
 
+
+    @Test(expected =  java.lang.NumberFormatException.class)
+    public void throw_exception_when_input_is_double() throws Exception {
+        String invalidInput = "3.5";
+
+        integerBodyMarshaller.marshall(invalidInput);
+    }
+
+
+    @Test(expected = java.lang.NumberFormatException.class)
+    public void throw_exception_when_input_is_maxInteger_plus_one() throws Exception {
+        String validInput = "2147483648";
+
+        integerBodyMarshaller.marshall(validInput);
+    }
+
+
     @Test(expected = IllegalArgumentException.class)
     public void throw_exception_when_input_is_null() throws Exception {
         integerBodyMarshaller.marshall(null);
