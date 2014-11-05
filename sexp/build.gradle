@@ -22,7 +22,7 @@ if (hasProperty("release")) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.6'
+    gradleVersion = '2.1'
 }
 
 repositories {
