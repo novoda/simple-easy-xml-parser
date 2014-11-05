@@ -5,6 +5,9 @@ apply plugin: 'signing'
 group = 'com.novoda'
 version = '1.0.2'
 
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
 def isDevBuild
 def isCiBuild
 def isReleaseBuild
