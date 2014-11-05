@@ -19,19 +19,20 @@ Adding to your project
 
 Gradle
 -
-````groovy
+
+```groovy
 repositories {
     maven {
         url 'http://ci.novoda.com/maven/releases/'
     }
 }
-`````
+```
 
-````groovy
+```groovy
 dependencies {
     compile 'com.novoda.sexp:core:1.0.2-alpha'
 }
-````
+```
 
 License
 -------
