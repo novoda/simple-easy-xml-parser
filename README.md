@@ -18,8 +18,7 @@ Adding to your project
 ======
 
 Gradle
--
-
+---
 ```groovy
 repositories {
     maven {
