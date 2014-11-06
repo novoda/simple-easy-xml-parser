@@ -2,6 +2,9 @@ apply plugin: 'java'
 apply plugin: 'application'
 mainClassName = "com.novoda.demo.SEXParsingDemo"
 
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
 dependencies {
     compile project(':sexp')
 }
