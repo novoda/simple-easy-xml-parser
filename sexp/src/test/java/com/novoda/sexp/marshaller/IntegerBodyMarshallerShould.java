@@ -29,6 +29,13 @@ public class IntegerBodyMarshallerShould {
         integerBodyMarshaller.marshall(invalidInput);
     }
 
+    @Test(expected = NumberFormatException.class)
+    public void throw_exception_when_input_number_is_too_big_for_integer() throws Exception {
+        String invalidInput = String.valueOf(Long.MAX_VALUE);
+
+        integerBodyMarshaller.marshall(invalidInput);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void throw_exception_when_input_is_null() throws Exception {
         integerBodyMarshaller.marshall(null);
