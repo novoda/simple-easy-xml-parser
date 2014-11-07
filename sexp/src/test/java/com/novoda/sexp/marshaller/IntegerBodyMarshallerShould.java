@@ -37,6 +37,13 @@ public class IntegerBodyMarshallerShould {
     }
 
     @Test(expected = IllegalArgumentException.class)
+    public void throw_exception_when_input_is_float() throws Exception {
+        String invalidInput = "0.5f";
+
+        integerBodyMarshaller.marshall(invalidInput);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void throw_exception_when_input_is_null() throws Exception {
         integerBodyMarshaller.marshall(null);
     }
