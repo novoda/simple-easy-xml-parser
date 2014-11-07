@@ -1,4 +1,4 @@
-SimpleEasyXmlParser ![](http://ci.novoda.com/buildStatus/icon?job=SimpleEasyXmlParser)
+SimpleEasyXmlParser [![](http://ci.novoda.com/buildStatus/icon?job=SimpleEasyXmlParser)](http://ci.novoda.com/job/SimpleEasyXmlParser/lastSuccessfulBuild/console)
 ===================
 
 A simple XML parser based upon Android sax parser but written in pure Java. SEXP gives callbacks for all parsing events and being written in pure java allows faster and more comprehensive testability.
