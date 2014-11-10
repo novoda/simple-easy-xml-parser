@@ -57,8 +57,12 @@ public class IntegerWrapperBodyMarshallerShould {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
 
             IntegerWrapperClass that = (IntegerWrapperClass) o;
 
@@ -81,18 +85,15 @@ public class IntegerWrapperBodyMarshallerShould {
         }
     }
 
-<<<<<<< HEAD
     private static class NoArgWrapperClass {
         public NoArgWrapperClass() {
-=======
-<<<<<<< HEAD
-    private static class PrivateConstructorWrapperClass {
-        private PrivateConstructorWrapperClass(int toWrap) {
-=======
-    private static class NoArgWrapperClass {
-        public NoArgWrapperClass() {
->>>>>>> 4c6ad0847b67d7aa90d7bc1497d472fd1e2df728
->>>>>>> f0eec3c... Merge branch 'droidcon' of github.com:novoda/SimpleEasyXmlParser into cketti-test_integer_wrapper_private_constructor
         }
     }
+
+    private static class PrivateConstructorWrapperClass {
+        private PrivateConstructorWrapperClass(int toWrap) {
+        }
+    }
+
 }
+
