@@ -1,4 +1,6 @@
-import com.novoda.sexp.XmlParser;
+package com.novoda.sexp;
+
+import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,10 +9,6 @@ import org.mockito.Mockito;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -29,19 +27,16 @@ public class XmlParserShould {
                     "<favouriteColour>Blue</favouriteColour>" +
                     "</novoda>";
 
-
-
     @Before
     public void setUp() throws Exception {
         initMocks(this);
     }
 
-
     @Test
     public void call_reader_parse_when_parse_is_called() {
         XmlParser xmlParser = new XmlParser();
 
-        xmlParser.parse(xml,xmlReader);
+        xmlParser.parse(xml, xmlReader);
 
         try {
             verify(xmlReader).parse(Mockito.<InputSource>any());
