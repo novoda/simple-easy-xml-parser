@@ -10,9 +10,6 @@ import org.xml.sax.XMLReader;
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-/**
- * Created by joaobiriba on 30/10/14.
- */
 public class XmlParserShould {
 
     @Mock
