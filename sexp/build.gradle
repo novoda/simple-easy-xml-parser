@@ -1,6 +1,14 @@
 apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'signing'
+apply plugin: 'android-bintray-release'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:android-bintray-release:0.2.3'
+    }
+}
 
 group = 'com.novoda'
 version = '1.0.2'
@@ -8,21 +16,6 @@ version = '1.0.2'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
-def isDevBuild
-def isCiBuild
-def isReleaseBuild
-def sonatypeRepositoryUrl
-
-if (hasProperty("release")) {
-    isReleaseBuild = true
-    sonatypeRepositoryUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-} else if (hasProperty("ci")) {
-    isCiBuild = true
-    version += "-SNAPSHOT"
-    sonatypeRepositoryUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
-} else {
-    isDevBuild = true
-}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.1'
@@ -38,78 +31,11 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.+'
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier 'sources'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives jar
-    archives sourcesJar
-    archives javadocJar
-}
-
-ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
-
-signing {
-    required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives
-}
-
-uploadArchives {
-    repositories {
-        if (isDevBuild) {
-            mavenLocal()
-        } else {
-            mavenDeployer {
-
-                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-                repository(url: sonatypeRepositoryUrl) {
-                    authentication(userName: sonatypeUsername, password: sonatypePassword)
-                }
-
-                pom.project {
-                    name 'sexp'
-                    packaging 'jar'
-                    description 'sax parser'
-                    url 'http://novoda.github.com/SimpleEasyXmlParser'
-
-                    scm {
-                        url 'scm:git@github.com:novoda/SimpleEasyXmlParser.git'
-                        connection 'scm:git@github.com:novoda/SimpleEasyXmlParser.git'
-                        developerConnection 'scm:git@github.com:novoda/SimpleEasyXmlParser.git'
-                    }
-
-                    licenses {
-                        license {
-                            name 'The Apache Software License, Version 2.0'
-                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                            distribution 'repo'
-                        }
-                    }
-
-                    developers {
-                        developer {
-                            id 'ouchadam'
-                            name 'Adam Brown'
-                        }
-                        developer {
-                            id 'blundell'
-                            name 'Paul Blundell'
-                        }
-                        developer {
-                            id 'charroch'
-                            name 'Carl Harroch'
-                        }
-                    }
-                }
-            }
-        }
-    }
+publish {
+    userOrg = 'novoda'
+    groupId = 'com.novoda'
+    artifactId = 'sexp'
+    version = project.version
+    description = 'Oh hi, this is a nice description for a project right?'
+    website = 'https://github.com/novoda/SimpleEasyXmlParser'
 }
