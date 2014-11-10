@@ -3,11 +3,11 @@ package com.novoda.sexp;
 import com.novoda.sax.RootElement;
 import com.novoda.sexp.finder.ElementFinderFactory;
 
-import org.xml.sax.XMLReader;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+
+import org.xml.sax.XMLReader;
 
 public class SimpleEasyXmlParser {
 
@@ -19,7 +19,7 @@ public class SimpleEasyXmlParser {
         parse(new ByteArrayInputStream(xml.getBytes(encoding)), instigator, getDefaultSEXPXMLReader());
     }
 
-    public static void  parse(String xml, Instigator instigator) {
+    public static void parse(String xml, Instigator instigator) {
         parse(new ByteArrayInputStream(xml.getBytes()), instigator, getDefaultSEXPXMLReader());
     }
 
