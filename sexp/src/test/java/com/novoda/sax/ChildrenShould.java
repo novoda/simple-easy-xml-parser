@@ -1,5 +1,6 @@
 package com.novoda.sax;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -9,8 +10,14 @@ public class ChildrenShould {
     private static final String FIRST_STRING_WITH_EQUAL_HASH = "0-42L";
     private static final String SECOND_STRING_WITH_EQUAL_HASH = "0-43-";
 
-    private Children children = new Children();
-    private Element parent = new Element(null, "", "test", 0);
+    private Children children;
+    private Element parent;
+
+    @Before
+    public void setUp() {
+        children = new Children();
+        parent = new Element(null, "", "test", 0);
+    }
 
     @Test
     public void create_new_child_with_equal_hash_uri_and_local() throws Exception {
