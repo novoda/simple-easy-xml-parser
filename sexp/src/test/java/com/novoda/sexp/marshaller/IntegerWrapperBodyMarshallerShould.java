@@ -36,6 +36,14 @@ public class IntegerWrapperBodyMarshallerShould {
         cut.marshall("");
     }
 
+    @Test(expected = RuntimeException.class)
+    public void failForClassesWithPrivateConstructor() throws Exception {
+        IntegerWrapperBodyMarshaller<PrivateConstructorWrapperClass> cut = integerWrapperBodyMarshaller(
+                PrivateConstructorWrapperClass.class);
+
+        cut.marshall("1");
+    }
+
     private <T> IntegerWrapperBodyMarshaller<T> integerWrapperBodyMarshaller(Class<T> clazz) {
         return new IntegerWrapperBodyMarshaller<T>(clazz);
     }
@@ -73,8 +81,18 @@ public class IntegerWrapperBodyMarshallerShould {
         }
     }
 
+<<<<<<< HEAD
     private static class NoArgWrapperClass {
         public NoArgWrapperClass() {
+=======
+<<<<<<< HEAD
+    private static class PrivateConstructorWrapperClass {
+        private PrivateConstructorWrapperClass(int toWrap) {
+=======
+    private static class NoArgWrapperClass {
+        public NoArgWrapperClass() {
+>>>>>>> 4c6ad0847b67d7aa90d7bc1497d472fd1e2df728
+>>>>>>> f0eec3c... Merge branch 'droidcon' of github.com:novoda/SimpleEasyXmlParser into cketti-test_integer_wrapper_private_constructor
         }
     }
 }
