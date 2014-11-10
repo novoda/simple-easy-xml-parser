@@ -30,6 +30,13 @@ public class IntegerWrapperBodyMarshallerShould {
     }
 
     @Test(expected = RuntimeException.class)
+    public void failForClassesWithNoArgConstructor() throws Exception {
+        IntegerWrapperBodyMarshaller<NoArgWrapperClass> cut = integerWrapperBodyMarshaller(NoArgWrapperClass.class);
+
+        cut.marshall("");
+    }
+
+    @Test(expected = RuntimeException.class)
     public void failForClassesWithPrivateConstructor() throws Exception {
         IntegerWrapperBodyMarshaller<PrivateConstructorWrapperClass> cut = integerWrapperBodyMarshaller(
                 PrivateConstructorWrapperClass.class);
@@ -74,8 +81,13 @@ public class IntegerWrapperBodyMarshallerShould {
         }
     }
 
+<<<<<<< HEAD
     private static class PrivateConstructorWrapperClass {
         private PrivateConstructorWrapperClass(int toWrap) {
+=======
+    private static class NoArgWrapperClass {
+        public NoArgWrapperClass() {
+>>>>>>> 4c6ad0847b67d7aa90d7bc1497d472fd1e2df728
         }
     }
 }
