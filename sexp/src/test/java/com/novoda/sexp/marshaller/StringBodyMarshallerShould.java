@@ -25,4 +25,5 @@ public class StringBodyMarshallerShould {
     public void marshallNull() throws Exception {
         assertThat(stringBodyMarshaller.marshall(null)).isEqualTo(null);
     }
+
 }
