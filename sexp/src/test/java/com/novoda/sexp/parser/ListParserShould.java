@@ -52,4 +52,7 @@ public class ListParserShould {
 
         verify(mockListener).onParsed(Mockito.<List<Object>>any());
     }
+
+
+
 }

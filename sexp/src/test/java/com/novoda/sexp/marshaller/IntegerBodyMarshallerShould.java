@@ -43,6 +43,13 @@ public class IntegerBodyMarshallerShould {
         integerBodyMarshaller.marshall(invalidInput);
     }
 
+    @Test(expected =  java.lang.NumberFormatException.class)
+    public void throw_exception_when_input_is_double() throws Exception {
+        String invalidInput = "3.5d";
+
+        integerBodyMarshaller.marshall(invalidInput);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void throw_exception_when_input_is_null() throws Exception {
         integerBodyMarshaller.marshall(null);
