@@ -1,13 +1,10 @@
 package com.novoda.sexp;
 
-import java.io.IOException;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 import static org.mockito.Mockito.verify;
@@ -33,17 +30,11 @@ public class XmlParserShould {
     }
 
     @Test
-    public void call_reader_parse_when_parse_is_called() {
+    public void call_reader_parse_when_parse_is_called() throws Exception {
         XmlParser xmlParser = new XmlParser();
 
         xmlParser.parse(xml, xmlReader);
 
-        try {
-            verify(xmlReader).parse(Mockito.<InputSource>any());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
+        verify(xmlReader).parse(Mockito.<InputSource>any());
     }
 }
