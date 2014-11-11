@@ -35,6 +35,7 @@ publish {
     userOrg = 'novoda'
     groupId = 'com.novoda'
     artifactId = 'sexp'
+    uploadName = 'SimpleEasyXmlParser'
     version = project.version
     description = 'Oh hi, this is a nice description for a project right?'
     website = 'https://github.com/novoda/SimpleEasyXmlParser'
