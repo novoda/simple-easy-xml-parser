@@ -1,4 +1,4 @@
-SimpleEasyXmlParser [![](http://ci.novoda.com/buildStatus/icon?job=SimpleEasyXmlParser)](http://ci.novoda.com/job/SimpleEasyXmlParser/lastSuccessfulBuild/console)
+simple-easy-xml-parser [![](http://ci.novoda.com/buildStatus/icon?job=SimpleEasyXmlParser)](http://ci.novoda.com/job/SimpleEasyXmlParser/lastSuccessfulBuild/console)
 ===================
 
 A simple XML parser based upon Android sax parser but written in pure Java. SEXP gives callbacks for all parsing events and being written in pure java allows faster and more comprehensive testability.
@@ -11,9 +11,9 @@ Example Useage
 For now examples of use can be found here:
 
 
-[SEXP Java Demo's](https://github.com/novoda/SimpleEasyXmlParser/tree/master/demo/src/main/java/com/novoda/demo)
+[SEXP Java Demo's](https://github.com/novoda/simple-easy-xml-parser/tree/master/demo/src/main/java/com/novoda/demo)
 
-[SEXP Android Demo's](https://github.com/novoda/SimpleEasyXmlParser/tree/master/demo/src/main/java/com/novoda/demoAndroid)
+[SEXP Android Demo's](https://github.com/novoda/simple-easy-xml-parser/tree/master/demoAndroid)
 
 Adding to your project
 ======
