@@ -1,12 +1,12 @@
 apply plugin: 'java'
-apply plugin: 'android-bintray-release'
+apply plugin: 'bintray-release'
 
 buildscript {
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.novoda:android-bintray-release:0.2.3'
+        classpath 'com.novoda:bintray-release:0.2.4'
     }
 }
 
@@ -35,8 +35,8 @@ publish {
     userOrg = 'novoda'
     groupId = 'com.novoda'
     artifactId = 'sexp'
-    uploadName = 'SimpleEasyXmlParser'
+    uploadName = 'simple-easy-xml-parser'
     version = project.version
     description = 'Oh hi, this is a nice description for a project right?'
-    website = 'https://github.com/novoda/SimpleEasyXmlParser'
+    website = 'https://github.com/novoda/simple-easy-xml-parser'
 }
