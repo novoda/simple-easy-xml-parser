@@ -1,4 +1,4 @@
-# simple-easy-xml-parser [![](http://ci.novoda.com/buildStatus/icon?job=SimpleEasyXmlParser)](http://ci.novoda.com/job/SimpleEasyXmlParser/lastSuccessfulBuild/console)
+# simple-easy-xml-parser [![](http://ci.novoda.com/buildStatus/icon?job=simple-easy-xml-parser)](http://ci.novoda.com/job/simple-easy-xml-parser/lastSuccessfulBuild/console) [![](https://raw.githubusercontent.com/novoda/novoda/master/assets/btn_apache_lisence.png)](LICENSE.txt)
 
 XML parsing is now sexy!
 
@@ -27,14 +27,7 @@ dependencies {
 
 Here are a list of useful links:
 
- * Contributing `// TODO`
- * [Github Issues](https://github.com/novoda/simple-easy-xml-parser/issues)
- * Stack Overflow Tag: `// TODO`
- * [SEXP Java Demo](https://github.com/novoda/simple-easy-xml-parser/tree/master/demo/src/main/java/com/novoda/demo)
- * [SEXP Android Demo](https://github.com/novoda/simple-easy-xml-parser/tree/master/demoAndroid)
-
-
-
-## License
-
-Copyright &copy; 2014 [Novoda](http://novoda.com/blog/) Ltd. Released under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+ * We always welcome people to contribute new features or bug fixes, [here is how](https://github.com/novoda/novoda/blob/master/CONTRIBUTING.md)
+ * If you have a problem check the [Issues Page](https://github.com/novoda/simple-easy-xml-parser/issues) first to see if we are working on it
+ * For further usage or to delve more deeply checkout the [Project Wiki](https://github.com/novoda/simple-easy-xml-parser/wiki)
+ * Looking for community help, browse the already asked [Stack Overflow Questions](http://stackoverflow.com/questions/tagged/support-sexp) or use the tag: `support-sexp` when posting a new question
