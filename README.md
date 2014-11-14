@@ -1,54 +1,33 @@
-simple-easy-xml-parser [![](http://ci.novoda.com/buildStatus/icon?job=SimpleEasyXmlParser)](http://ci.novoda.com/job/SimpleEasyXmlParser/lastSuccessfulBuild/console)
-===================
+# simple-easy-xml-parser [![](http://ci.novoda.com/buildStatus/icon?job=simple-easy-xml-parser)](http://ci.novoda.com/job/simple-easy-xml-parser/lastSuccessfulBuild/console) [![](https://raw.githubusercontent.com/novoda/novoda/master/assets/btn_apache_lisence.png)](LICENSE.txt)
 
-A simple XML parser based upon Android sax parser but written in pure Java. SEXP gives callbacks for all parsing events and being written in pure java allows faster and more comprehensive testability.
-
-
-Example Useage
-===============
+XML parsing is now sexy!
 
 
-For now examples of use can be found here:
+## Description
+
+A simple typed XML parser based upon Android sax parser but written in pure Java. SEXP gives callbacks for all parsing events and being written in pure java allows faster and more comprehensive testability.
 
 
-[SEXP Java Demo's](https://github.com/novoda/simple-easy-xml-parser/tree/master/demo/src/main/java/com/novoda/demo)
+## Adding to your project
 
-[SEXP Android Demo's](https://github.com/novoda/simple-easy-xml-parser/tree/master/demoAndroid)
+To start using this library, add these lines to the `build.gradle` of your project:
 
-Adding to your project
-======
-
-Gradle
----
 ```groovy
 repositories {
-    maven {
-        url 'http://ci.novoda.com/maven/releases/'
-    }
+    jcenter()
 }
-```
 
-```groovy
 dependencies {
-    compile 'com.novoda.sexp:core:1.0.2-alpha'
+    compile 'com.novoda.sexp:core:1.0.3'
 }
 ```
 
-License
--------
 
-    (c) Copyright 2014 Novoda
+## Links
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+Here are a list of useful links:
 
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
-![SEXP](/professor_sexp.jpg)
+ * We always welcome people to contribute new features or bug fixes, [here is how](https://github.com/novoda/novoda/blob/master/CONTRIBUTING.md)
+ * If you have a problem check the [Issues Page](https://github.com/novoda/simple-easy-xml-parser/issues) first to see if we are working on it
+ * For further usage or to delve more deeply checkout the [Project Wiki](https://github.com/novoda/simple-easy-xml-parser/wiki)
+ * Looking for community help, browse the already asked [Stack Overflow Questions](http://stackoverflow.com/questions/tagged/support-sexp) or use the tag: `support-sexp` when posting a new question
