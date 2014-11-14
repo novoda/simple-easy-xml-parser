@@ -37,6 +37,6 @@ publish {
     artifactId = 'sexp'
     uploadName = 'simple-easy-xml-parser'
     version = project.version
-    description = 'Oh hi, this is a nice description for a project right?'
+    description = 'A simple XML parser based upon Android sax parser but written in pure Java.'
     website = 'https://github.com/novoda/simple-easy-xml-parser'
 }
