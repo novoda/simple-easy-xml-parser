@@ -1,4 +1,4 @@
-# simple-easy-xml-parser [![](http://ci.novoda.com/buildStatus/icon?job=simple-easy-xml-parser)](http://ci.novoda.com/job/simple-easy-xml-parser/lastBuild/console) [![](https://raw.githubusercontent.com/novoda/novoda/master/assets/btn_apache_lisence.png)](LICENSE.txt)
+# simple-easy-xml-parser [![](https://ci.novoda.com/buildStatus/icon?job=simple-easy-xml-parser)](https://ci.novoda.com/job/simple-easy-xml-parser/lastBuild/console) [![](https://raw.githubusercontent.com/novoda/novoda/master/assets/btn_apache_lisence.png)](LICENSE.txt)
 
 XML parsing is now sexy!
 
