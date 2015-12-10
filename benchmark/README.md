@@ -1,5 +1,4 @@
-Attempting to find otu which dahm XML parser to use!
-
+Attempting to find out which dahm XML parser to use!
 
 Run the main method inside `XmlParsingBenchmark.java` and wait for the results.
 
@@ -10,3 +9,7 @@ At the moment we test:
 Future:
 
 - More complex tests and perhaps some discussive text about the API needed
+
+
+
+We rely on https://github.com/google/caliper/wiki/ to do the hard work of twiddling the nobs.
