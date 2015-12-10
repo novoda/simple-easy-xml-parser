@@ -1,2 +1,5 @@
-include "sexp", "demo", "demoAndroid"
+include ':sexp'
+include ':benchmark'
+include ':demo'
+include ':demoAndroid'
 
