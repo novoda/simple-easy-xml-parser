@@ -1,4 +1,4 @@
-package com.novoda.jackson;
+package com.novoda.jackson.small;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 

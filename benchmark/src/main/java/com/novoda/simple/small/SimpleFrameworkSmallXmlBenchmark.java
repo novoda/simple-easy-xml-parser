@@ -1,4 +1,4 @@
-package com.novoda.simple;
+package com.novoda.simple.small;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;

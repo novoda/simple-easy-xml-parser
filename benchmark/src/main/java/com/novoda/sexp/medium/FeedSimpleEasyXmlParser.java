@@ -1,4 +1,4 @@
-package com.novoda.sexp;
+package com.novoda.sexp.medium;
 
 import com.novoda.sax.Element;
 import com.novoda.sexp.finder.ElementFinder;
@@ -71,7 +71,7 @@ public class FeedSimpleEasyXmlParser {
         this.logoFinder = factory.getStringFinder();
         this.generatorFinder = factory.getStringFinder();
         this.linkFinder = factory.getAttributeFinder(new LinkAttributeMarshaller(), ATTR_HREF, ATTR_REL, ATTR_TITLE, ATTR_TYPE);
-        this.entryFinder = factory.getListElementFinder(new com.novoda.sexp.EntrySimpleEasyXmlParser(factory), parseWatcher);
+        this.entryFinder = factory.getListElementFinder(new EntrySimpleEasyXmlParser(factory), parseWatcher);
     }
 
     private final ParseWatcher<SexpMediumXmlBenchmark.Entry> parseWatcher = new ParseWatcher<SexpMediumXmlBenchmark.Entry>() {

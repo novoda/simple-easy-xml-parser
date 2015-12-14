@@ -1,50 +1,33 @@
-package com.novoda.simple;
+package com.novoda.jackson.medium;
+
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
 
 import java.util.List;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
-import org.simpleframework.xml.Path;
-import org.simpleframework.xml.Root;
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
-
-public class SimpleFrameworkMediumXmlBenchmark {
+public class JacksonMediumXmlBenchmark {
 
     public void parse(String xml) throws Exception {
-        Serializer serializer = new Persister();
-        Feed feed = serializer.read(Feed.class, xml);
+        XmlMapper mapper = new XmlMapper();
+        Feed feed = mapper.readValue(xml, Feed.class);
         System.out.println(getClass().getSimpleName() + " " + feed);
     }
 
-    @Root(name = "employee", strict = false)
     public static class Feed {
-        @Element
         public String id;
-
-        @Element
-        public String title;
-
-        @Element
+        public Title title;
         public String updated;
-
-        @Path("author")
-        @Element(name = "name")
-        public String author;
-
-        @Element
+        public Author author;
         public String logo;
-
-        @Element
         public Link link;
-
-        @Element
         public String generator;
-
-        @ElementList(name = "entry", inline = true)
+        @JacksonXmlProperty(localName = "entry")
+        @JacksonXmlElementWrapper(useWrapping = false)
         public List<Entry> entries;
 
+        @Override
         public String toString() {
             return "Feed{" +
                     "id='" + id + '\'' +
@@ -59,16 +42,24 @@ public class SimpleFrameworkMediumXmlBenchmark {
         }
     }
 
+    public static class Author {
+        public String name;
+
+        @Override
+        public String toString() {
+            return "Author{" +
+                    "name='" + name + '\'' +
+                    '}';
+        }
+    }
+
     public static class Entry {
-        @Element
         public String id;
-        @Element
-        public String title;
-        @Element
-        public String summary;
-        @Element
+        public Title title;
+        public Summary summary;
         public String updated;
-        @ElementList(name = "link", inline = true)
+        @JacksonXmlProperty(localName = "link")
+        @JacksonXmlElementWrapper(useWrapping = false)
         public List<Link> links;
 
         @Override
@@ -83,16 +74,35 @@ public class SimpleFrameworkMediumXmlBenchmark {
         }
     }
 
-    public static class Link {
-        @Attribute
-        public String href;
-        @Attribute(required = false)
-        public String title;
-        @Attribute
-        public String rel;
-        @Attribute
+    public static class Title {
         public String type;
 
+        @JacksonXmlText(value = true)
+        public String title;
+
+        @Override
+        public String toString() {
+            return title;
+        }
+    }
+
+    public static class Summary {
+        public String type;
+
+        @JacksonXmlText(value = true)
+        public String summary;
+
+        @Override
+        public String toString() {
+            return summary;
+        }
+    }
+
+    public static class Link {
+        public String href;
+        public String title;
+        public String rel;
+        public String type;
         @Override
         public String toString() {
             return "Link{" +
@@ -103,5 +113,4 @@ public class SimpleFrameworkMediumXmlBenchmark {
                     '}';
         }
     }
-
 }

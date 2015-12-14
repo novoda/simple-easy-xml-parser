@@ -1,4 +1,4 @@
-package com.novoda.sexp;
+package com.novoda.sexp.medium;
 
 import com.novoda.sax.Element;
 import com.novoda.sax.ElementListener;

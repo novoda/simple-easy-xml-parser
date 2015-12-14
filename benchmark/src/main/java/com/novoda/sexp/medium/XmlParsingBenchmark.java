@@ -1,11 +1,14 @@
-package com.novoda.sexp;
+package com.novoda.sexp.medium;
 
 import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
 import com.google.caliper.api.VmOptions;
 import com.google.caliper.runner.CaliperMain;
-import com.novoda.jackson.JacksonSmallXmlBenchmark;
-import com.novoda.simple.SimpleFrameworkMediumXmlBenchmark;
+import com.novoda.jackson.medium.JacksonMediumXmlBenchmark;
+import com.novoda.jackson.small.JacksonSmallXmlBenchmark;
+import com.novoda.sexp.small.SexpSmallXmlBenchmark;
+import com.novoda.simple.medium.SimpleFrameworkMediumXmlBenchmark;
+import com.novoda.simple.small.SimpleFrameworkSmallXmlBenchmark;
 
 import java.io.InputStream;
 
@@ -32,7 +35,7 @@ public class XmlParsingBenchmark {
 
         @Benchmark
         public void simpleframework() throws Exception {
-            new com.novoda.simple.SimpleFrameworkSmallXmlBenchmark().parse(XML);
+            new SimpleFrameworkSmallXmlBenchmark().parse(XML);
         }
     }
 
@@ -56,12 +59,12 @@ public class XmlParsingBenchmark {
 
         @Benchmark
         public void sexp() throws Exception {
-            new com.novoda.sexp.SexpMediumXmlBenchmark().parse(xml);
+            new SexpMediumXmlBenchmark().parse(xml);
         }
 
         @Benchmark
         public void jackson() throws Exception {
-            new com.novoda.jackson.JacksonMediumXmlBenchmark().parse(xml);
+            new JacksonMediumXmlBenchmark().parse(xml);
         }
 
         @Benchmark
