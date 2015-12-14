@@ -52,9 +52,9 @@ public class XmlParsingBenchmark {
             return s.hasNext() ? s.next() : "";
         }
 
-        //        @Benchmark
+        @Benchmark
         public void sexp() throws Exception {
-            new SexpSmallXmlBenchmark().parse(xml);
+            new SexpMediumXmlBenchmark().parse(xml);
         }
 
         @Benchmark
