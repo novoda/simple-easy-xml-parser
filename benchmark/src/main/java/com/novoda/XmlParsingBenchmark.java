@@ -62,9 +62,9 @@ public class XmlParsingBenchmark {
             new JacksonMediumXmlBenchmark().parse(xml);
         }
 
-        //        @Benchmark
+        @Benchmark
         public void simpleframework() throws Exception {
-            new SimpleFrameworkSmallXmlBenchmark().parse(xml);
+            new SimpleFrameworkMediumXmlBenchmark().parse(xml);
         }
     }
 }
