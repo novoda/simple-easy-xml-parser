@@ -133,6 +133,20 @@ public class ElementFinderFactory {
     }
 
     /**
+     * Will parse the attributes off an XML tag, into {@link Object} then inform the {@link ParseWatcher}
+     * The idea is to have a callback for a number of elements to create a {@link java.util.List}
+     *
+     * @param attributeMarshaller The marshaller to parse the attributes into your required type
+     * @param watcher        The watcher on elements to be informed of object creation
+     * @param attrTags            The tags of the attributes you wish to parse
+     * @param <T>            The type you wish to create from the XML body
+     * @return {@link ElementFinder}
+     */
+    public <T> ElementFinder<T> getListAttributeFinder(AttributeMarshaller<T> attributeMarshaller, ParseWatcher<T> watcher, String... attrTags) {
+        return new ListElementFinder<T>(new BasicAttributeParser<T>(attributeMarshaller, attrTags), watcher);
+    }
+
+    /**
      * Will parse the body of an XML tag into {@link Object} using the supplied {@link BodyMarshaller}
      *
      * @param bodyMarshaller The marshaller to parse the body into your required type
