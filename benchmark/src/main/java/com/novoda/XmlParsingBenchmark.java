@@ -10,7 +10,7 @@ import java.io.InputStream;
 public class XmlParsingBenchmark {
 
     public static void main(String[] args) {
-        CaliperMain.main(SmallXmlBenchmark.class, args);
+        CaliperMain.main(MediumXmlBenchmark.class, args);
     }
 
     @VmOptions("-XX:-TieredCompilation")

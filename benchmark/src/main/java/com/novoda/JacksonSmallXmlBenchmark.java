@@ -1,6 +1,6 @@
 package com.novoda;
 
-import com.fasterxml.jackson.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class JacksonSmallXmlBenchmark {
 

@@ -1,6 +1,9 @@
 package com.novoda;
 
-import com.fasterxml.jackson.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
 
 import java.util.List;
 
@@ -14,13 +17,14 @@ public class JacksonMediumXmlBenchmark {
 
     public static class Feed {
         public String id;
-
-        public String title;
+        public Title title;
         public String updated;
         public Author author;
         public String logo;
-        public String link;
+        public Link link;
         public String generator;
+        @JacksonXmlProperty(localName = "entry")
+        @JacksonXmlElementWrapper(useWrapping = false)
         public List<Entry> entries;
 
         @Override
@@ -51,9 +55,11 @@ public class JacksonMediumXmlBenchmark {
 
     public static class Entry {
         public String id;
-        public String title;
-        public String summary;
+        public Title title;
+        public Summary summary;
         public String updated;
+        @JacksonXmlProperty(localName = "link")
+        @JacksonXmlElementWrapper(useWrapping = false)
         public List<Link> links;
 
         @Override
@@ -68,15 +74,42 @@ public class JacksonMediumXmlBenchmark {
         }
     }
 
-    public static class Link {
-        public String url;
+    public static class Title {
+        public String type;
+
+        @JacksonXmlText(value = true)
         public String title;
 
         @Override
         public String toString() {
+            return title;
+        }
+    }
+
+    public static class Summary {
+        public String type;
+
+        @JacksonXmlText(value = true)
+        public String summary;
+
+        @Override
+        public String toString() {
+            return summary;
+        }
+    }
+
+    public static class Link {
+        public String href;
+        public String title;
+        public String rel;
+        public String type;
+        @Override
+        public String toString() {
             return "Link{" +
-                    "url='" + url + '\'' +
+                    "url='" + href + '\'' +
                     ", title='" + title + '\'' +
+                    ", rel='" + rel + '\'' +
+                    ", type='" + type + '\'' +
                     '}';
         }
     }
