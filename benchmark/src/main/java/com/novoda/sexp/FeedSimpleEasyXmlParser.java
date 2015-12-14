@@ -1,4 +1,4 @@
-package com.novoda;
+package com.novoda.sexp;
 
 import com.novoda.sax.Element;
 import com.novoda.sexp.finder.ElementFinder;
@@ -7,8 +7,6 @@ import com.novoda.sexp.parser.ParseWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.novoda.SexpMediumXmlBenchmark.*;
 
 public class FeedSimpleEasyXmlParser {
 
@@ -57,11 +55,11 @@ public class FeedSimpleEasyXmlParser {
     private final ElementFinder<String> idFinder;
     private final ElementFinder<String> titleFinder;
     private final ElementFinder<String> updatedFinder;
-    private final ElementFinder<Author> authorFinder;
+    private final ElementFinder<SexpMediumXmlBenchmark.Author> authorFinder;
     private final ElementFinder<String> logoFinder;
     private final ElementFinder<String> generatorFinder;
-    private final ElementFinder<Link> linkFinder;
-    private final ElementFinder<Entry> entryFinder;
+    private final ElementFinder<SexpMediumXmlBenchmark.Link> linkFinder;
+    private final ElementFinder<SexpMediumXmlBenchmark.Entry> entryFinder;
 
     private FeedHolder feedHolder;
 
@@ -73,12 +71,12 @@ public class FeedSimpleEasyXmlParser {
         this.logoFinder = factory.getStringFinder();
         this.generatorFinder = factory.getStringFinder();
         this.linkFinder = factory.getAttributeFinder(new LinkAttributeMarshaller(), ATTR_HREF, ATTR_REL, ATTR_TITLE, ATTR_TYPE);
-        this.entryFinder = factory.getListElementFinder(new EntrySimpleEasyXmlParser(factory), parseWatcher);
+        this.entryFinder = factory.getListElementFinder(new com.novoda.sexp.EntrySimpleEasyXmlParser(factory), parseWatcher);
     }
 
-    private final ParseWatcher<Entry> parseWatcher = new ParseWatcher<Entry>() {
+    private final ParseWatcher<SexpMediumXmlBenchmark.Entry> parseWatcher = new ParseWatcher<SexpMediumXmlBenchmark.Entry>() {
         @Override
-        public void onParsed(Entry entry) {
+        public void onParsed(SexpMediumXmlBenchmark.Entry entry) {
             feedHolder.entries.add(entry);
         }
     };
@@ -95,7 +93,7 @@ public class FeedSimpleEasyXmlParser {
         entryFinder.find(element, TAG_ENTRY);
     }
 
-    public Feed getResult() {
+    public SexpMediumXmlBenchmark.Feed getResult() {
         feedHolder.id = idFinder.getResultOrThrow();
         feedHolder.title = titleFinder.getResultOrThrow();
         feedHolder.updated = updatedFinder.getResultOrThrow();
@@ -111,14 +109,14 @@ public class FeedSimpleEasyXmlParser {
         private String id;
         private String title;
         private String updated;
-        private Author author;
+        private SexpMediumXmlBenchmark.Author author;
         private String logo;
         private String generator;
-        private Link link;
-        private List<Entry> entries = new ArrayList<>();
+        private SexpMediumXmlBenchmark.Link link;
+        private List<SexpMediumXmlBenchmark.Entry> entries = new ArrayList<>();
 
-        public Feed asFeed() {
-            return new Feed(id, title, updated, author, logo, generator, link, entries);
+        public SexpMediumXmlBenchmark.Feed asFeed() {
+            return new SexpMediumXmlBenchmark.Feed(id, title, updated, author, logo, generator, link, entries);
         }
     }
 }

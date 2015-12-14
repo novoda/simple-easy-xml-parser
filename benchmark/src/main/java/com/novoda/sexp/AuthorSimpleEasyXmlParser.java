@@ -1,6 +1,5 @@
-package com.novoda;
+package com.novoda.sexp;
 
-import com.novoda.SexpMediumXmlBenchmark.Author;
 import com.novoda.sax.Element;
 import com.novoda.sax.ElementListener;
 import com.novoda.sexp.finder.ElementFinder;
@@ -10,20 +9,20 @@ import com.novoda.sexp.parser.Parser;
 
 import org.xml.sax.Attributes;
 
-public class AuthorSimpleEasyXmlParser implements Parser<Author> {
+public class AuthorSimpleEasyXmlParser implements Parser<SexpMediumXmlBenchmark.Author> {
 
     private static final String TAG_NAME = "name";
 
     private final ElementFinder<String> nameFinder;
 
-    private ParseWatcher<Author> listener;
+    private ParseWatcher<SexpMediumXmlBenchmark.Author> listener;
 
     public AuthorSimpleEasyXmlParser(ElementFinderFactory factory) {
         nameFinder = factory.getStringFinder();
     }
 
     @Override
-    public void parse(Element element, ParseWatcher<Author> listener) {
+    public void parse(Element element, ParseWatcher<SexpMediumXmlBenchmark.Author> listener) {
         this.listener = listener;
 
         element.setElementListener(authorListener);
@@ -39,7 +38,7 @@ public class AuthorSimpleEasyXmlParser implements Parser<Author> {
 
         @Override
         public void end() {
-            Author author = new Author(nameFinder.getResultOrThrow());
+            SexpMediumXmlBenchmark.Author author = new SexpMediumXmlBenchmark.Author(nameFinder.getResultOrThrow());
             listener.onParsed(author);
         }
 

@@ -1,6 +1,5 @@
-package com.novoda;
+package com.novoda.sexp;
 
-import com.novoda.SexpMediumXmlBenchmark.Link;
 import com.novoda.sax.Element;
 import com.novoda.sax.ElementListener;
 import com.novoda.sexp.finder.ElementFinder;
@@ -12,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xml.sax.Attributes;
-
-import static com.novoda.SexpMediumXmlBenchmark.Entry;
 
 public class EntrySimpleEasyXmlParser implements Parser<SexpMediumXmlBenchmark.Entry> {
 
@@ -31,10 +28,10 @@ public class EntrySimpleEasyXmlParser implements Parser<SexpMediumXmlBenchmark.E
     private final ElementFinder<String> titleFinder;
     private final ElementFinder<String> summaryFinder;
     private final ElementFinder<String> updatedFinder;
-    private final ElementFinder<Link> linkFinder;
+    private final ElementFinder<SexpMediumXmlBenchmark.Link> linkFinder;
 
-    private ParseWatcher<Entry> listener;
-    private final List<Link> linkList = new ArrayList<>();
+    private ParseWatcher<SexpMediumXmlBenchmark.Entry> listener;
+    private final List<SexpMediumXmlBenchmark.Link> linkList = new ArrayList<>();
 
         /*
     <entry>
@@ -61,16 +58,16 @@ public class EntrySimpleEasyXmlParser implements Parser<SexpMediumXmlBenchmark.E
         linkFinder = factory.getListAttributeFinder(new LinkAttributeMarshaller(), linkParseWatcher, ATTR_HREF, ATTR_REL, ATTR_TITLE, ATTR_TYPE);
     }
 
-    private final ParseWatcher<Link> linkParseWatcher = new ParseWatcher<Link>() {
+    private final ParseWatcher<SexpMediumXmlBenchmark.Link> linkParseWatcher = new ParseWatcher<SexpMediumXmlBenchmark.Link>() {
         @Override
-        public void onParsed(Link link) {
+        public void onParsed(SexpMediumXmlBenchmark.Link link) {
             linkList.add(link);
         }
     };
 
 
     @Override
-    public void parse(Element element, ParseWatcher<Entry> listener) {
+    public void parse(Element element, ParseWatcher<SexpMediumXmlBenchmark.Entry> listener) {
         this.listener = listener;
 
         element.setElementListener(entryListener);
@@ -91,7 +88,7 @@ public class EntrySimpleEasyXmlParser implements Parser<SexpMediumXmlBenchmark.E
 
         @Override
         public void end() {
-            Entry entry = new Entry();
+            SexpMediumXmlBenchmark.Entry entry = new SexpMediumXmlBenchmark.Entry();
             entry.id = idFinder.getResultOrThrow();
             entry.summary = summaryFinder.getResultOrThrow();
             entry.title = titleFinder.getResultOrThrow();

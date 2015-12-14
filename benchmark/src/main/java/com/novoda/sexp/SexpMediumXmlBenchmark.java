@@ -1,9 +1,6 @@
-package com.novoda;
+package com.novoda.sexp;
 
 import com.novoda.sax.RootElement;
-import com.novoda.sexp.Instigator;
-import com.novoda.sexp.RootTag;
-import com.novoda.sexp.SimpleEasyXmlParser;
 import com.novoda.sexp.finder.ElementFinderFactory;
 
 import java.util.List;
