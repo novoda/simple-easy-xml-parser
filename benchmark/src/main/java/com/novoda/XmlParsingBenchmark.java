@@ -1,4 +1,4 @@
-package com.novoda.sexp.medium;
+package com.novoda;
 
 import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
@@ -6,6 +6,7 @@ import com.google.caliper.api.VmOptions;
 import com.google.caliper.runner.CaliperMain;
 import com.novoda.jackson.medium.JacksonMediumXmlBenchmark;
 import com.novoda.jackson.small.JacksonSmallXmlBenchmark;
+import com.novoda.sexp.medium.SexpMediumXmlBenchmark;
 import com.novoda.sexp.small.SexpSmallXmlBenchmark;
 import com.novoda.simple.medium.SimpleFrameworkMediumXmlBenchmark;
 import com.novoda.simple.small.SimpleFrameworkSmallXmlBenchmark;
