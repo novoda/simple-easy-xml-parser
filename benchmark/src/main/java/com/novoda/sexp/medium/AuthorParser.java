@@ -9,7 +9,7 @@ import com.novoda.sexp.parser.Parser;
 
 import org.xml.sax.Attributes;
 
-public class AuthorSimpleEasyXmlParser implements Parser<SexpMediumXmlBenchmark.Author> {
+public class AuthorParser implements Parser<SexpMediumXmlBenchmark.Author> {
 
     private static final String TAG_NAME = "name";
 
@@ -17,7 +17,7 @@ public class AuthorSimpleEasyXmlParser implements Parser<SexpMediumXmlBenchmark.
 
     private ParseWatcher<SexpMediumXmlBenchmark.Author> listener;
 
-    public AuthorSimpleEasyXmlParser(ElementFinderFactory factory) {
+    public AuthorParser(ElementFinderFactory factory) {
         nameFinder = factory.getStringFinder();
     }
 

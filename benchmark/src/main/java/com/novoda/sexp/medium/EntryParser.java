@@ -12,7 +12,7 @@ import java.util.List;
 
 import org.xml.sax.Attributes;
 
-public class EntrySimpleEasyXmlParser implements Parser<SexpMediumXmlBenchmark.Entry> {
+public class EntryParser implements Parser<SexpMediumXmlBenchmark.Entry> {
 
     private static final String TAG_ID = "id";
     private static final String TAG_TITLE = "title";
@@ -50,7 +50,7 @@ public class EntrySimpleEasyXmlParser implements Parser<SexpMediumXmlBenchmark.E
         </entry>
      */
 
-    public EntrySimpleEasyXmlParser(ElementFinderFactory factory) {
+    public EntryParser(ElementFinderFactory factory) {
         idFinder = factory.getStringFinder();
         titleFinder = factory.getStringFinder();
         summaryFinder = factory.getStringFinder();

@@ -10,11 +10,11 @@ import java.util.List;
 
 public class SexpMediumXmlBenchmark {
 
-    private final FeedSimpleEasyXmlParser parser;
+    private final FeedParser parser;
 
     public SexpMediumXmlBenchmark() {
         ElementFinderFactory factory = SimpleEasyXmlParser.getElementFinderFactory();
-        parser = new FeedSimpleEasyXmlParser(factory);
+        parser = new FeedParser(factory);
     }
 
     public void parse(String xml) throws Exception {
@@ -34,10 +34,10 @@ public class SexpMediumXmlBenchmark {
 
     public static class FeedInstigator implements Instigator {
 
-        private final FeedSimpleEasyXmlParser parser;
+        private final FeedParser parser;
         private final Callback callback;
 
-        public FeedInstigator(FeedSimpleEasyXmlParser parser, Callback callback) {
+        public FeedInstigator(FeedParser parser, Callback callback) {
             this.parser = parser;
             this.callback = callback;
         }

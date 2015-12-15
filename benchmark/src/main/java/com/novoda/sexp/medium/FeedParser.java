@@ -8,7 +8,7 @@ import com.novoda.sexp.parser.ParseWatcher;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FeedSimpleEasyXmlParser {
+public class FeedParser {
 
 /*
         <id>1234cat</id>
@@ -63,15 +63,15 @@ public class FeedSimpleEasyXmlParser {
 
     private FeedHolder feedHolder;
 
-    public FeedSimpleEasyXmlParser(ElementFinderFactory factory) {
+    public FeedParser(ElementFinderFactory factory) {
         this.idFinder = factory.getStringFinder();
         this.titleFinder = factory.getStringFinder();
         this.updatedFinder = factory.getStringFinder();
-        this.authorFinder = factory.getTypeFinder(new AuthorSimpleEasyXmlParser(factory));
+        this.authorFinder = factory.getTypeFinder(new AuthorParser(factory));
         this.logoFinder = factory.getStringFinder();
         this.generatorFinder = factory.getStringFinder();
         this.linkFinder = factory.getAttributeFinder(new LinkAttributeMarshaller(), ATTR_HREF, ATTR_REL, ATTR_TITLE, ATTR_TYPE);
-        this.entryFinder = factory.getListElementFinder(new EntrySimpleEasyXmlParser(factory), parseWatcher);
+        this.entryFinder = factory.getListElementFinder(new EntryParser(factory), parseWatcher);
     }
 
     private final ParseWatcher<SexpMediumXmlBenchmark.Entry> parseWatcher = new ParseWatcher<SexpMediumXmlBenchmark.Entry>() {
