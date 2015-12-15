@@ -11,66 +11,67 @@ import com.novoda.sexp.small.SexpSmallXmlBenchmark;
 import com.novoda.simple.medium.SimpleFrameworkMediumXmlBenchmark;
 import com.novoda.simple.small.SimpleFrameworkSmallXmlBenchmark;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 public class XmlParsingBenchmark {
 
     public static void main(String[] args) {
-        CaliperMain.main(MediumXmlBenchmark.class, args);
+        CaliperMain.main(XmlBenchmark.class, args);
     }
 
     @VmOptions("-XX:-TieredCompilation")
-    public static class SmallXmlBenchmark {
+    public static class XmlBenchmark {
 
-        private static final String XML = "<employee><name>Paul</name></employee>";
-
-        @Benchmark
-        public void sexp() throws Exception {
-            new SexpSmallXmlBenchmark().parse(XML);
-        }
-
-        @Benchmark
-        public void jackson() throws Exception {
-            new JacksonSmallXmlBenchmark().parse(XML);
-        }
-
-        @Benchmark
-        public void simpleframework() throws Exception {
-            new SimpleFrameworkSmallXmlBenchmark().parse(XML);
-        }
-    }
-
-    @VmOptions("-XX:-TieredCompilation")
-    public static class MediumXmlBenchmark {
-
-        private String xml;
+        private String xmlSmall;
+        private String xmlMedium;
 
         @BeforeExperiment
         public void setUp() throws Exception {
-            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-            InputStream stream = classloader.getResourceAsStream("medium.xml");
-            xml = convertStreamToString(stream);
-            stream.close();
+            xmlSmall = loadResource("small.xml");
+            xmlMedium = loadResource("medium.xml");
         }
 
-        static String convertStreamToString(java.io.InputStream is) {
+        @Benchmark
+        public void jackson_InputSmall() throws Exception {
+            new JacksonSmallXmlBenchmark().parse(xmlSmall);
+        }
+
+        @Benchmark
+        public void jackson_InputMedium() throws Exception {
+            new JacksonMediumXmlBenchmark().parse(xmlMedium);
+        }
+
+        @Benchmark
+        public void sexp_InputSmall() throws Exception {
+            new SexpSmallXmlBenchmark().parse(xmlSmall);
+        }
+
+        @Benchmark
+        public void sexp_InputMedium() throws Exception {
+            new SexpMediumXmlBenchmark().parse(xmlMedium);
+        }
+
+        @Benchmark
+        public void simpleframework_InputSmall() throws Exception {
+            new SimpleFrameworkSmallXmlBenchmark().parse(xmlSmall);
+        }
+
+        @Benchmark
+        public void simpleframework_InputMedium() throws Exception {
+            new SimpleFrameworkMediumXmlBenchmark().parse(xmlMedium);
+        }
+
+        private String loadResource(String resourceName) throws IOException {
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            try (InputStream stream = classLoader.getResourceAsStream(resourceName)) {
+                return convertStreamToString(stream);
+            }
+        }
+
+        private static String convertStreamToString(java.io.InputStream is) {
             java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
             return s.hasNext() ? s.next() : "";
-        }
-
-        @Benchmark
-        public void sexp() throws Exception {
-            new SexpMediumXmlBenchmark().parse(xml);
-        }
-
-        @Benchmark
-        public void jackson() throws Exception {
-            new JacksonMediumXmlBenchmark().parse(xml);
-        }
-
-        @Benchmark
-        public void simpleframework() throws Exception {
-            new SimpleFrameworkMediumXmlBenchmark().parse(xml);
         }
     }
 }
