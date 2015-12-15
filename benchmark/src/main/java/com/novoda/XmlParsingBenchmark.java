@@ -1,9 +1,7 @@
 package com.novoda;
 
-import com.google.caliper.BeforeExperiment;
-import com.google.caliper.Benchmark;
-import com.google.caliper.api.VmOptions;
-import com.google.caliper.runner.CaliperMain;
+import com.google.caliper.Runner;
+import com.google.caliper.SimpleBenchmark;
 import com.novoda.jackson.medium.JacksonMediumXmlBenchmark;
 import com.novoda.jackson.small.JacksonSmallXmlBenchmark;
 import com.novoda.sexp.medium.SexpMediumXmlBenchmark;
@@ -17,49 +15,54 @@ import java.io.InputStream;
 public class XmlParsingBenchmark {
 
     public static void main(String[] args) {
-        CaliperMain.main(XmlBenchmark.class, args);
+        Runner.main(XmlBenchmark.class, args);
     }
 
-    @VmOptions("-XX:-TieredCompilation")
-    public static class XmlBenchmark {
+    public static class XmlBenchmark extends SimpleBenchmark {
 
         private String xmlSmall;
         private String xmlMedium;
 
-        @BeforeExperiment
+        @Override
         public void setUp() throws Exception {
             xmlSmall = loadResource("small.xml");
             xmlMedium = loadResource("medium.xml");
         }
 
-        @Benchmark
-        public void jackson_InputSmall() throws Exception {
-            new JacksonSmallXmlBenchmark().parse(xmlSmall);
+        public void time_jackson_InputSmall(int reps) throws Exception {
+            for (int i = 0; i < reps; i++) {
+                new JacksonSmallXmlBenchmark().parse(xmlSmall);
+            }
         }
 
-        @Benchmark
-        public void jackson_InputMedium() throws Exception {
-            new JacksonMediumXmlBenchmark().parse(xmlMedium);
+        public void time_jackson_InputMedium(int reps) throws Exception {
+            for (int i = 0; i < reps; i++) {
+                new JacksonMediumXmlBenchmark().parse(xmlMedium);
+            }
         }
 
-        @Benchmark
-        public void sexp_InputSmall() throws Exception {
-            new SexpSmallXmlBenchmark().parse(xmlSmall);
+        public void time_sexp_InputSmall(int reps) throws Exception {
+            for (int i = 0; i < reps; i++) {
+                new SexpSmallXmlBenchmark().parse(xmlSmall);
+            }
         }
 
-        @Benchmark
-        public void sexp_InputMedium() throws Exception {
-            new SexpMediumXmlBenchmark().parse(xmlMedium);
+        public void time_sexp_InputMedium(int reps) throws Exception {
+            for (int i = 0; i < reps; i++) {
+                new SexpMediumXmlBenchmark().parse(xmlMedium);
+            }
         }
 
-        @Benchmark
-        public void simpleframework_InputSmall() throws Exception {
-            new SimpleFrameworkSmallXmlBenchmark().parse(xmlSmall);
+        public void time_simpleframework_InputSmall(int reps) throws Exception {
+            for (int i = 0; i < reps; i++) {
+                new SimpleFrameworkSmallXmlBenchmark().parse(xmlSmall);
+            }
         }
 
-        @Benchmark
-        public void simpleframework_InputMedium() throws Exception {
-            new SimpleFrameworkMediumXmlBenchmark().parse(xmlMedium);
+        public void time_simpleframework_InputMedium(int reps) throws Exception {
+            for (int i = 0; i < reps; i++) {
+                new SimpleFrameworkMediumXmlBenchmark().parse(xmlMedium);
+            }
         }
 
         private String loadResource(String resourceName) throws IOException {
