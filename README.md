@@ -22,6 +22,32 @@ dependencies {
 }
 ```
 
+## Simple usage
+
+```java
+String XML =
+            "<novoda>" +
+              "<favouriteColour>Blue</favouriteColour>" +
+            "</novoda>";
+
+ElementFinderFactory factory = SimpleEasyXmlParser.getElementFinderFactory();
+elementFinder = factory.getStringFinder();
+ElementFinderInstigator<String> instigator = new SimpleInstigator(elementFinder);
+String favouriteColour = SimpleEasyXmlParser.parse(XML, instigator);
+
+private static class SimpleInstigator extends ElementFinderInstigator<String> {
+
+    public SimpleInstigator(ElementFinder<String> elementFinder) {
+        super(elementFinder, "favouriteColour");
+    }
+
+    @Override
+    public RootTag getRootTag() {
+        return RootTag.create("novoda");
+    }
+}
+```
+(See the `demo` and `demoAndroid` modules for more.)
 
 ## Links
 
