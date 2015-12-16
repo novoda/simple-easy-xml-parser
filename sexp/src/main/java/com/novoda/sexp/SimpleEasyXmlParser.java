@@ -12,26 +12,54 @@ import org.xml.sax.XMLReader;
 
 public class SimpleEasyXmlParser {
 
+    /**
+     * @return an {@link ElementFinderFactory} this Factory is how you select which XML elements to parse as what java types
+     * see it's javadoc for more
+     */
     public static ElementFinderFactory getElementFinderFactory() {
         return new ElementFinderFactory();
     }
 
+    /**
+     * @param xml        the xml to parse
+     * @param encoding   the encoding of your xml
+     * @param instigator your fully created parser of the xml
+     * @throws UnsupportedEncodingException if the encoding you passed isn't suppored
+     */
     public static void parse(String xml, String encoding, Instigator instigator) throws UnsupportedEncodingException {
         parse(new ByteArrayInputStream(xml.getBytes(encoding)), instigator, getDefaultSEXPXMLReader());
     }
 
+    /**
+     * @param xml        the xml to parse
+     * @param instigator your fully created parser of the xml
+     */
     public static void parse(String xml, Instigator instigator) {
         parse(new ByteArrayInputStream(xml.getBytes()), instigator, getDefaultSEXPXMLReader());
     }
 
+    /**
+     * @param xml        the xml to parse
+     * @param instigator your fully created parser of the xml
+     */
     public static void parse(InputStream xml, Instigator instigator) {
         parse(xml, instigator, getDefaultSEXPXMLReader());
     }
 
+    /**
+     * @param xml        the xml to parse
+     * @param instigator your fully created parser of the xml
+     * @param xmlReader  is the interface that an XML parser's SAX2 driver must implement , using this? _bad ass_ alert
+     */
     public static void parse(String xml, Instigator instigator, XMLReader xmlReader) {
         parse(new ByteArrayInputStream(xml.getBytes()), instigator, xmlReader);
     }
 
+    /**
+     * @param xml        the xml to parse
+     * @param instigator your fully created parser of the xml
+     * @param xmlReader  is the interface that an XML parser's SAX2 driver must implement , using this? _bad ass_ alert
+     */
     public static void parse(InputStream xml, Instigator instigator, XMLReader xmlReader) {
         RootTag rootTag = instigator.getRootTag();
         RootElement rootElement = new RootElement(rootTag.getNamespace(), rootTag.getTag());
@@ -42,22 +70,56 @@ public class SimpleEasyXmlParser {
         xmlParser.parse(xml, xmlReader);
     }
 
+    /**
+     * @param xml        the xml to parse
+     * @param encoding   the encoding of your xml
+     * @param instigator your fully created parser of the xml
+     * @param <T>        the expected type of your parsed XML
+     * @return your parsed XML as an object
+     * @throws UnsupportedEncodingException if the encoding you passed isn't suppored
+     */
     public static <T> T parse(String xml, String encoding, ElementFinderInstigator<T> instigator) throws UnsupportedEncodingException {
         return parse(new ByteArrayInputStream(xml.getBytes(encoding)), instigator, getDefaultSEXPXMLReader());
     }
 
+    /**
+     * @param xml        the xml to parse
+     * @param instigator your fully created parser of the xml
+     * @param <T>        the expected type of your parsed XML
+     * @return your parsed XML as an object
+     */
     public static <T> T parse(String xml, ElementFinderInstigator<T> instigator) {
         return parse(new ByteArrayInputStream(xml.getBytes()), instigator, getDefaultSEXPXMLReader());
     }
 
+    /**
+     * @param xml        the xml to parse
+     * @param instigator your fully created parser of the xml
+     * @param <T>        the expected type of your parsed XML
+     * @return your parsed XML as an object
+     */
     public static <T> T parse(InputStream xml, ElementFinderInstigator<T> instigator) {
         return parse(xml, instigator, getDefaultSEXPXMLReader());
     }
 
+    /**
+     * @param xml        the xml to parse
+     * @param instigator your fully created parser of the xml
+     * @param xmlReader  is the interface that an XML parser's SAX2 driver must implement , using this? _bad ass_ alert
+     * @param <T>        the expected type of your parsed XML
+     * @return your parsed XML as an object
+     */
     public static <T> T parse(String xml, ElementFinderInstigator<T> instigator, XMLReader xmlReader) {
         return parse(new ByteArrayInputStream(xml.getBytes()), instigator, xmlReader);
     }
 
+    /**
+     * @param xml        the xml to parse
+     * @param instigator your fully created parser of the xml
+     * @param xmlReader  is the interface that an XML parser's SAX2 driver must implement , using this? _bad ass_ alert
+     * @param <T>        the expected type of your parsed XML
+     * @return your parsed XML as an object
+     */
     public static <T> T parse(InputStream xml, final ElementFinderInstigator<T> instigator, XMLReader xmlReader) {
         final CountDownLatch latch = new CountDownLatch(1);
         Instigator latchedInstigator = new Instigator() {
