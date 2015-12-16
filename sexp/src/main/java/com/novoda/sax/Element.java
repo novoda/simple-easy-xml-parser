@@ -63,8 +63,10 @@ public class Element {
      */
     public Element getChild(String uri, String localName) {
         if (endTextElementListener != null) {
-            throw new IllegalStateException("This element already has an end"
-                    + " text element listener. It cannot have children.");
+            throw new IllegalStateException(
+                    "This element already has an end"
+                            + " text element listener. It cannot have children."
+            );
         }
 
         if (children == null) {
@@ -126,7 +128,8 @@ public class Element {
     public void setStartElementListener(StartElementListener startElementListener) {
         if (this.startElementListener != null) {
             throw new IllegalStateException(
-                    "Start element listener has already been set.");
+                    "Start element listener has already been set."
+            );
         }
         this.startElementListener = startElementListener;
     }
@@ -137,7 +140,8 @@ public class Element {
     public void setEndElementListener(EndElementListener endElementListener) {
         if (this.endElementListener != null) {
             throw new IllegalStateException(
-                    "End element listener has already been set.");
+                    "End element listener has already been set."
+            );
         }
         this.endElementListener = endElementListener;
     }
@@ -149,12 +153,15 @@ public class Element {
             EndTextElementListener endTextElementListener) {
         if (this.endTextElementListener != null) {
             throw new IllegalStateException(
-                    "End text element listener has already been set.");
+                    "End text element listener has already been set."
+            );
         }
 
         if (children != null) {
-            throw new IllegalStateException("This element already has children."
-                    + " It cannot have an end text element listener.");
+            throw new IllegalStateException(
+                    "This element already has children."
+                            + " It cannot have an end text element listener."
+            );
         }
 
         this.endTextElementListener = endTextElementListener;
@@ -193,7 +200,8 @@ public class Element {
                     throw new BadXmlException(
                             "Element named " + this + " is missing required"
                                     + " child element named "
-                                    + child + ".", locator);
+                                    + child + ".", locator
+                    );
                 }
             }
         }

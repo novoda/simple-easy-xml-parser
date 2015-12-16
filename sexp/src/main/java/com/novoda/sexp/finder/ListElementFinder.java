@@ -1,7 +1,6 @@
 package com.novoda.sexp.finder;
 
 import com.novoda.sax.Element;
-
 import com.novoda.sexp.parser.ParseWatcher;
 import com.novoda.sexp.parser.Parser;
 

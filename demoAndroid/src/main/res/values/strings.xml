@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">demoAndroid</string>
+  <string name="app_name">demoAndroid</string>
 
-    <string name="title_activity_menu">Menu</string>
-    <string name="title_activity_one_tag">One Tag Example</string>
-    <string name="title_activity_simple_example">Simple Example</string>
-    <string name="title_activity_team_example">Team Example</string>
-    <string name="title_activity_podcast">Podcast Example</string>
-    <string name="title_activity_base">BaseActivity</string>
-    
-    <string name="parsing_result">Parsing result :</string>
-    
+  <string name="title_activity_menu">Menu</string>
+  <string name="title_activity_one_tag">One Tag Example</string>
+  <string name="title_activity_simple_example">Simple Example</string>
+  <string name="title_activity_team_example">Team Example</string>
+  <string name="title_activity_podcast">Podcast Example</string>
+  <string name="title_activity_base">BaseActivity</string>
+
+  <string name="parsing_result">Parsing result :</string>
+
 </resources>

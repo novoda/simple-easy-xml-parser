@@ -1,7 +1,6 @@
 package com.novoda.sexp.parser;
 
 import com.novoda.sax.Element;
-
 import com.novoda.sexp.finder.ElementFinder;
 import com.novoda.sexp.finder.ElementFinderFactory;
 import com.novoda.sexp.marshaller.BodyMarshaller;

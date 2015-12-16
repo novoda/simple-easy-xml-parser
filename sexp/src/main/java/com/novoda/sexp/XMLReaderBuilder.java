@@ -1,14 +1,14 @@
 package com.novoda.sexp;
 
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXNotRecognizedException;
-import org.xml.sax.SAXNotSupportedException;
-import org.xml.sax.XMLReader;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.validation.Schema;
+
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXNotRecognizedException;
+import org.xml.sax.SAXNotSupportedException;
+import org.xml.sax.XMLReader;
 
 public class XMLReaderBuilder {
 
@@ -28,7 +28,7 @@ public class XMLReaderBuilder {
     /**
      * Sets the particular feature in the underlying implementation of org.xml.sax.XMLReader. http://xerces.apache.org/xerces2-j/features.html
      *
-     * @param name The name of the feature to be set.
+     * @param name  The name of the feature to be set.
      * @param value The value of the feature to be set.
      * @return XMLReaderBuilder
      * @throws XMLReaderCreationException
@@ -46,7 +46,6 @@ public class XMLReaderBuilder {
         }
         return this;
     }
-
 
     /**
      * Perform namespace processing: prefixes will be stripped off element and attribute names and
