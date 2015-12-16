@@ -118,9 +118,11 @@ public class RootElement extends Element {
 
             // Prohibit mixed text and elements.
             if (bodyBuilder != null) {
-                throw new BadXmlException("Encountered mixed content"
-                        + " within text element named " + current + ".",
-                        locator);
+                throw new BadXmlException(
+                        "Encountered mixed content"
+                                + " within text element named " + current + ".",
+                        locator
+                );
             }
 
             // If we're one level below the current element.
@@ -139,9 +141,11 @@ public class RootElement extends Element {
         void startRoot(String uri, String localName, Attributes attributes) throws SAXException {
             Element root = RootElement.this;
             if (root.uri.compareTo(uri) != 0 || root.localName.compareTo(localName) != 0) {
-                throw new BadXmlException("Root element name does"
-                        + " not match. Expected: " + root + ", Got: "
-                        + Element.toString(uri, localName), locator);
+                throw new BadXmlException(
+                        "Root element name does"
+                                + " not match. Expected: " + root + ", Got: "
+                                + Element.toString(uri, localName), locator
+                );
             }
 
             start(root, attributes);

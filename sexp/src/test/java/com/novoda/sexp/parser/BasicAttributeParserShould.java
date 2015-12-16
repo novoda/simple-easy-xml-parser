@@ -1,7 +1,6 @@
 package com.novoda.sexp.parser;
 
 import com.novoda.sax.Element;
-
 import com.novoda.sexp.marshaller.AttributeMarshaller;
 
 import org.junit.Before;

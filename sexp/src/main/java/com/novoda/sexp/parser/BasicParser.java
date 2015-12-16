@@ -2,7 +2,6 @@ package com.novoda.sexp.parser;
 
 import com.novoda.sax.Element;
 import com.novoda.sax.EndTextElementListener;
-
 import com.novoda.sexp.marshaller.BodyMarshaller;
 
 public class BasicParser<T> implements Parser<T> {
@@ -15,12 +14,14 @@ public class BasicParser<T> implements Parser<T> {
 
     @Override
     public void parse(Element element, final ParseWatcher<T> listener) {
-        element.setEndTextElementListener(new EndTextElementListener() {
-            @Override
-            public void end(String body) {
-                listener.onParsed(bodyMarshaller.marshall(body));
-            }
-        });
+        element.setEndTextElementListener(
+                new EndTextElementListener() {
+                    @Override
+                    public void end(String body) {
+                        listener.onParsed(bodyMarshaller.marshall(body));
+                    }
+                }
+        );
     }
 
 }

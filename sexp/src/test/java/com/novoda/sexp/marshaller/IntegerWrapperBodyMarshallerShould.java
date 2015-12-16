@@ -39,7 +39,8 @@ public class IntegerWrapperBodyMarshallerShould {
     @Test(expected = RuntimeException.class)
     public void failForClassesWithPrivateConstructor() throws Exception {
         IntegerWrapperBodyMarshaller<PrivateConstructorWrapperClass> cut = integerWrapperBodyMarshaller(
-                PrivateConstructorWrapperClass.class);
+                PrivateConstructorWrapperClass.class
+        );
 
         cut.marshall("1");
     }

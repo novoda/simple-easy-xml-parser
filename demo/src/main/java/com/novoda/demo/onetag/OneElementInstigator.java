@@ -2,7 +2,6 @@ package com.novoda.demo.onetag;
 
 import com.novoda.sax.EndTextElementListener;
 import com.novoda.sax.RootElement;
-
 import com.novoda.sexp.Instigator;
 import com.novoda.sexp.RootTag;
 import com.novoda.sexp.finder.ElementFinder;
@@ -31,13 +30,15 @@ public class OneElementInstigator implements Instigator {
 
     @Override
     public void create(RootElement element) {
-        element.setEndTextElementListener(new EndTextElementListener() {
-            @Override
-            public void end(String body) {
-                elementFinder.onParsed(body);
-                parseFinishWatcher.onFinish();
-            }
-        });
+        element.setEndTextElementListener(
+                new EndTextElementListener() {
+                    @Override
+                    public void end(String body) {
+                        elementFinder.onParsed(body);
+                        parseFinishWatcher.onFinish();
+                    }
+                }
+        );
     }
 
     @Override

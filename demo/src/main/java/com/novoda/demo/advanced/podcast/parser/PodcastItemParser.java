@@ -1,8 +1,8 @@
 package com.novoda.demo.advanced.podcast.parser;
 
-import com.novoda.demo.advanced.podcast.pojo.PodcastItem;
 import com.novoda.demo.advanced.podcast.pojo.Author;
 import com.novoda.demo.advanced.podcast.pojo.Link;
+import com.novoda.demo.advanced.podcast.pojo.PodcastItem;
 import com.novoda.demo.advanced.podcast.pojo.Title;
 import com.novoda.demo.advanced.podcast.pojo.itunes.ItunesDuration;
 import com.novoda.sax.Element;
