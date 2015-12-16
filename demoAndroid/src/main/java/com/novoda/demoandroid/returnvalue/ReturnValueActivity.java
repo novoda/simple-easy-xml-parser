@@ -41,7 +41,7 @@ public class ReturnValueActivity extends SecondLevelBaseActivity {
         new ParsingTask(XML, instigator).execute();
     }
 
-    public static class SimpleInstigator extends ElementFinderInstigator<String> {
+    private static class SimpleInstigator extends ElementFinderInstigator<String> {
 
         public SimpleInstigator(ElementFinder<String> elementFinder, String elementTag) {
             super(elementFinder, elementTag);
@@ -53,7 +53,7 @@ public class ReturnValueActivity extends SecondLevelBaseActivity {
         }
     }
 
-    public class ParsingTask extends AsyncTask<Void, Void, String> {
+    private class ParsingTask extends AsyncTask<Void, Void, String> {
         private String xmlToParse;
         private SimpleInstigator instigator;
 
