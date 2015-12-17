@@ -16,26 +16,31 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
     <activity
       android:name="com.novoda.demoandroid.onetag.OneTagActivity"
       android:label="@string/title_activity_one_tag"
-      android:parentActivityName="com.novoda.demoandroid.MenuActivity"></activity>
+      android:parentActivityName="com.novoda.demoandroid.MenuActivity" />
+    <activity
+      android:name=".returnvalue.ReturnValueActivity"
+      android:label="@string/title_activity_return_value"
+      android:parentActivityName="com.novoda.demoandroid.MenuActivity" />
     <activity
       android:name="com.novoda.demoandroid.simple.SimpleExampleActivity"
       android:label="@string/title_activity_simple_example"
-      android:parentActivityName="com.novoda.demoandroid.MenuActivity"></activity>
+      android:parentActivityName="com.novoda.demoandroid.MenuActivity" />
     <activity
       android:name="com.novoda.demoandroid.team.TeamExampleActivity"
       android:label="@string/title_activity_team_example"
-      android:parentActivityName="com.novoda.demoandroid.MenuActivity"></activity>
+      android:parentActivityName="com.novoda.demoandroid.MenuActivity" />
     <activity
       android:name="com.novoda.demoandroid.podcast.PodcastExampleActivity"
       android:label="@string/title_activity_podcast"
-      android:parentActivityName="com.novoda.demoandroid.MenuActivity"></activity>
+      android:parentActivityName="com.novoda.demoandroid.MenuActivity" />
     <activity
       android:name="com.novoda.demoandroid.SecondLevelBaseActivity"
       android:label="@string/title_activity_base"
-      android:parentActivityName="com.novoda.demoandroid.MenuActivity"></activity>
+      android:parentActivityName="com.novoda.demoandroid.MenuActivity" />
   </application>
 
 </manifest>

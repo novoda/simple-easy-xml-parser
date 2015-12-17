@@ -10,6 +10,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.novoda.demoandroid.returnvalue.ReturnValueActivity;
 import com.novoda.demoandroid.onetag.OneTagActivity;
 import com.novoda.demoandroid.podcast.PodcastExampleActivity;
 import com.novoda.demoandroid.simple.SimpleExampleActivity;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class MenuActivity extends Activity {
     private static final int DIVIDER_HEIGHT = 2;
-    private ListView menu;
+
     private Context context;
 
     @Override
@@ -29,7 +30,7 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
 
         context = this;
-        menu = (ListView) findViewById(R.id.lv_menu);
+        ListView menu = (ListView) findViewById(R.id.lv_menu);
         List<NavigationItem> items = populateNavigationMenu();
         ArrayAdapter<NavigationItem> adapter;
         adapter = new ArrayAdapter<NavigationItem>(this, android.R.layout.simple_list_item_1, android.R.id.text1, items);
@@ -38,7 +39,6 @@ public class MenuActivity extends Activity {
         menu.setDividerHeight(DIVIDER_HEIGHT);
         menu.setOnItemClickListener(
                 new OnItemClickListener() {
-
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         NavigationItem current = (NavigationItem) parent.getItemAtPosition(position);
@@ -52,6 +52,7 @@ public class MenuActivity extends Activity {
     private List<NavigationItem> populateNavigationMenu() {
         List<NavigationItem> items = new ArrayList<NavigationItem>();
         items.add(new NavigationItem(OneTagActivity.class, getResources().getString(R.string.title_activity_one_tag)));
+        items.add(new NavigationItem(ReturnValueActivity.class, getResources().getString(R.string.title_activity_return_value)));
         items.add(new NavigationItem(SimpleExampleActivity.class, getResources().getString(R.string.title_activity_simple_example)));
         items.add(new NavigationItem(PodcastExampleActivity.class, getResources().getString(R.string.title_activity_podcast)));
         items.add(new NavigationItem(TeamExampleActivity.class, getResources().getString(R.string.title_activity_team_example)));

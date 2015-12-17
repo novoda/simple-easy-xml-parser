@@ -4,6 +4,7 @@
   <string name="app_name">demoAndroid</string>
 
   <string name="title_activity_menu">Menu</string>
+  <string name="title_activity_return_value">Return Value Example</string>
   <string name="title_activity_one_tag">One Tag Example</string>
   <string name="title_activity_simple_example">Simple Example</string>
   <string name="title_activity_team_example">Team Example</string>
