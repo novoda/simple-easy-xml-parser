@@ -150,7 +150,7 @@ public class SimpleEasyXmlParser {
         try {
             latch.await();
         } catch (InterruptedException e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
 
         return instigator.getResultOrThrow();
