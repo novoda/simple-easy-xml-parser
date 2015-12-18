@@ -4,11 +4,11 @@ import com.novoda.sax.RootElement;
 
 /**
  * This instigator can be used when you want to return your parsed object synchronously.
- * A good example being {@link SimpleEasyXmlParser#parse(String, Traverser)}
+ * A good example being {@link SimpleEasyXmlParser#parse(String, Streamer)}
  *
  * @param <R> the type of object you expect as a result of xml parsing
  */
-public interface Traverser<R> {
+public interface Streamer<R> {
     /**
      * @return The root tag of your XML file
      */
@@ -32,10 +32,10 @@ public interface Traverser<R> {
      *
      * @param rootElement the root element of your XML file
      */
-    void traverse(RootElement rootElement);
+    void stream(RootElement rootElement);
 
     /**
      * @return the object you expected to be parsed
      */
-    R getResultOrThrow();
+    R getStreamResult();
 }
