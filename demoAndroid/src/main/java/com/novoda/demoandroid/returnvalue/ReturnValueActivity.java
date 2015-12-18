@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.novoda.demoandroid.R;
 import com.novoda.demoandroid.SecondLevelBaseActivity;
 import com.novoda.sax.RootElement;
-import com.novoda.sexp.TypedInstigator;
+import com.novoda.sexp.Traverser;
 import com.novoda.sexp.RootTag;
 import com.novoda.sexp.SimpleEasyXmlParser;
 import com.novoda.sexp.finder.ElementFinder;
@@ -42,7 +42,7 @@ public class ReturnValueActivity extends SecondLevelBaseActivity {
         new ParsingTask(XML, instigator).execute();
     }
 
-    private static class SimpleInstigator implements TypedInstigator<String> {
+    private static class SimpleInstigator implements Traverser<String> {
 
         private final ElementFinder<String> elementFinder;
         private final String elementTag;
@@ -58,13 +58,8 @@ public class ReturnValueActivity extends SecondLevelBaseActivity {
         }
 
         @Override
-        public void create(RootElement rootElement) {
+        public void traverse(RootElement rootElement) {
             elementFinder.find(rootElement, elementTag);
-        }
-
-        @Override
-        public void end() {
-            //no-op
         }
 
         @Override

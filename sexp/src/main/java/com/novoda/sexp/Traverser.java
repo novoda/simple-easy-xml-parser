@@ -1,12 +1,14 @@
 package com.novoda.sexp;
 
-import com.novoda.sax.EndElementListener;
 import com.novoda.sax.RootElement;
 
 /**
- * {@link SimpleTagInstigator } is an example implementation
+ * This instigator can be used when you want to return your parsed object synchronously.
+ * A good example being {@link SimpleEasyXmlParser#parse(String, Traverser)}
+ *
+ * @param <R> the type of object you expect as a result of xml parsing
  */
-public interface Instigator extends EndElementListener {
+public interface Traverser<R> {
     /**
      * @return The root tag of your XML file
      */
@@ -30,11 +32,10 @@ public interface Instigator extends EndElementListener {
      *
      * @param rootElement the root element of your XML file
      */
-    void create(RootElement rootElement);
+    void traverse(RootElement rootElement);
 
     /**
-     * Called when the corresponding closing root tag of your XML file is found
+     * @return the object you expected to be parsed
      */
-    @Override
-    void end();
+    R getResultOrThrow();
 }
