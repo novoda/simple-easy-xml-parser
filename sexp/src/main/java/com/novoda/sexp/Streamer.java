@@ -3,7 +3,7 @@ package com.novoda.sexp;
 import com.novoda.sax.RootElement;
 
 /**
- * This instigator can be used when you want to return your parsed object synchronously.
+ * This streamer can be used when you want to return your parsed object synchronously.
  * A good example being {@link SimpleEasyXmlParser#parse(String, Streamer)}
  *
  * @param <R> the type of object you expect as a result of xml parsing
@@ -15,7 +15,7 @@ public interface Streamer<R> {
     RootTag getRootTag();
 
     /**
-     * This is where you traverse the xml 'tree' by using
+     * This is where you stream the xml 'tree' by using
      * {@link com.novoda.sexp.finder.ElementFinder ElementFinder}
      * or {@link com.novoda.sexp.parser.Parser Parser}
      * objects to parse the XML.<br/><br/>
@@ -35,7 +35,7 @@ public interface Streamer<R> {
     void stream(RootElement rootElement);
 
     /**
-     * @return the object you expected to be parsed
+     * @return the object you expected to be streamed
      */
     R getStreamResult();
 }

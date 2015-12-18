@@ -73,7 +73,7 @@ public class SimpleEasyXmlParser {
     /**
      * @param xml        the xml to parse
      * @param encoding   the encoding of your xml
-     * @param streamer   your fully created parser of the xml
+     * @param streamer   your fully created streamer of the xml
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      * @throws UnsupportedEncodingException if the encoding you passed isn't suppored
@@ -84,7 +84,7 @@ public class SimpleEasyXmlParser {
 
     /**
      * @param xml        the xml to parse
-     * @param streamer   your fully created parser of the xml
+     * @param streamer   your fully created streamer of the xml
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      */
@@ -94,7 +94,7 @@ public class SimpleEasyXmlParser {
 
     /**
      * @param xml        the xml to parse
-     * @param streamer   your fully created parser of the xml
+     * @param streamer   your fully created streamer of the xml
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      */
@@ -104,7 +104,7 @@ public class SimpleEasyXmlParser {
 
     /**
      * @param xml        the xml to parse
-     * @param streamer   your fully created parser of the xml
+     * @param streamer   your fully created streamer of the xml
      * @param xmlReader  is the interface that an XML parser's SAX2 driver must implement , using this? _bad ass_ alert
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
@@ -115,7 +115,7 @@ public class SimpleEasyXmlParser {
 
     /**
      * @param xml        the xml to parse
-     * @param streamer   your fully created parser of the xml
+     * @param streamer   your fully created streamer of the xml
      * @param xmlReader  is the interface that an XML parser's SAX2 driver must implement , using this? _bad ass_ alert
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
