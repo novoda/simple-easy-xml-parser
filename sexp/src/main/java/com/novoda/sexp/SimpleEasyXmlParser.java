@@ -78,7 +78,7 @@ public class SimpleEasyXmlParser {
      * @return your parsed XML as an object
      * @throws UnsupportedEncodingException if the encoding you passed isn't suppored
      */
-    public static <T> T parse(String xml, String encoding, ElementFinderInstigator<T> instigator) throws UnsupportedEncodingException {
+    public static <T> T parse(String xml, String encoding, TypedInstigator<T> instigator) throws UnsupportedEncodingException {
         return parse(new ByteArrayInputStream(xml.getBytes(encoding)), instigator, getDefaultSEXPXMLReader());
     }
 
@@ -88,7 +88,7 @@ public class SimpleEasyXmlParser {
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      */
-    public static <T> T parse(String xml, ElementFinderInstigator<T> instigator) {
+    public static <T> T parse(String xml, TypedInstigator<T> instigator) {
         return parse(new ByteArrayInputStream(xml.getBytes()), instigator, getDefaultSEXPXMLReader());
     }
 
@@ -98,7 +98,7 @@ public class SimpleEasyXmlParser {
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      */
-    public static <T> T parse(InputStream xml, ElementFinderInstigator<T> instigator) {
+    public static <T> T parse(InputStream xml, TypedInstigator<T> instigator) {
         return parse(xml, instigator, getDefaultSEXPXMLReader());
     }
 
@@ -109,7 +109,7 @@ public class SimpleEasyXmlParser {
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      */
-    public static <T> T parse(String xml, ElementFinderInstigator<T> instigator, XMLReader xmlReader) {
+    public static <T> T parse(String xml, TypedInstigator<T> instigator, XMLReader xmlReader) {
         return parse(new ByteArrayInputStream(xml.getBytes()), instigator, xmlReader);
     }
 
@@ -120,7 +120,7 @@ public class SimpleEasyXmlParser {
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      */
-    public static <T> T parse(InputStream xml, final ElementFinderInstigator<T> instigator, XMLReader xmlReader) {
+    public static <T> T parse(InputStream xml, final TypedInstigator<T> instigator, XMLReader xmlReader) {
         final CountDownLatch latch = new CountDownLatch(1);
         Instigator latchedInstigator = new Instigator() {
             @Override
