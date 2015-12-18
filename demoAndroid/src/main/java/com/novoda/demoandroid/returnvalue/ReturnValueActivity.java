@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 import com.novoda.demoandroid.R;
 import com.novoda.demoandroid.SecondLevelBaseActivity;
-import com.novoda.sexp.ElementFinderInstigator;
+import com.novoda.sax.RootElement;
+import com.novoda.sexp.Streamer;
 import com.novoda.sexp.RootTag;
 import com.novoda.sexp.SimpleEasyXmlParser;
 import com.novoda.sexp.finder.ElementFinder;
@@ -36,28 +37,42 @@ public class ReturnValueActivity extends SecondLevelBaseActivity {
 
         ElementFinderFactory factory = SimpleEasyXmlParser.getElementFinderFactory();
         ElementFinder<String> elementFinder = factory.getStringFinder();
-        SimpleInstigator instigator = new SimpleInstigator(elementFinder, "favouriteColour");
+        SimpleStreamer instigator = new SimpleStreamer(elementFinder, "favouriteColour");
 
         new ParsingTask(XML, instigator).execute();
     }
 
-    private static class SimpleInstigator extends ElementFinderInstigator<String> {
+    private static class SimpleStreamer implements Streamer<String> {
 
-        public SimpleInstigator(ElementFinder<String> elementFinder, String elementTag) {
-            super(elementFinder, elementTag);
+        private final ElementFinder<String> elementFinder;
+        private final String elementTag;
+
+        public SimpleStreamer(ElementFinder<String> elementFinder, String elementTag) {
+            this.elementFinder = elementFinder;
+            this.elementTag = elementTag;
         }
 
         @Override
         public RootTag getRootTag() {
             return RootTag.create("novoda");
         }
+
+        @Override
+        public void stream(RootElement rootElement) {
+            elementFinder.find(rootElement, elementTag);
+        }
+
+        @Override
+        public String getStreamResult() {
+            return elementFinder.getResultOrThrow();
+        }
     }
 
     private class ParsingTask extends AsyncTask<Void, Void, String> {
         private String xmlToParse;
-        private SimpleInstigator instigator;
+        private SimpleStreamer instigator;
 
-        public ParsingTask(String xml, SimpleInstigator anInstigator) {
+        public ParsingTask(String xml, SimpleStreamer anInstigator) {
             xmlToParse = xml;
             instigator = anInstigator;
         }

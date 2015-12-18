@@ -1,19 +1,21 @@
 package com.novoda.sexp;
 
-import com.novoda.sax.EndElementListener;
 import com.novoda.sax.RootElement;
 
 /**
- * {@link SimpleTagInstigator } is an example implementation
+ * This streamer can be used when you want to return your parsed object synchronously.
+ * A good example being {@link SimpleEasyXmlParser#parse(String, Streamer)}
+ *
+ * @param <R> the type of object you expect as a result of xml parsing
  */
-public interface Instigator extends EndElementListener {
+public interface Streamer<R> {
     /**
      * @return The root tag of your XML file
      */
     RootTag getRootTag();
 
     /**
-     * This is where you traverse the xml 'tree' by using
+     * This is where you stream the xml 'tree' by using
      * {@link com.novoda.sexp.finder.ElementFinder ElementFinder}
      * or {@link com.novoda.sexp.parser.Parser Parser}
      * objects to parse the XML.<br/><br/>
@@ -30,11 +32,10 @@ public interface Instigator extends EndElementListener {
      *
      * @param rootElement the root element of your XML file
      */
-    void create(RootElement rootElement);
+    void stream(RootElement rootElement);
 
     /**
-     * Called when the corresponding closing root tag of your XML file is found
+     * @return the object you expected to be streamed
      */
-    @Override
-    void end();
+    R getStreamResult();
 }

@@ -73,64 +73,64 @@ public class SimpleEasyXmlParser {
     /**
      * @param xml        the xml to parse
      * @param encoding   the encoding of your xml
-     * @param instigator your fully created parser of the xml
+     * @param streamer   your fully created streamer of the xml
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      * @throws UnsupportedEncodingException if the encoding you passed isn't suppored
      */
-    public static <T> T parse(String xml, String encoding, ElementFinderInstigator<T> instigator) throws UnsupportedEncodingException {
-        return parse(new ByteArrayInputStream(xml.getBytes(encoding)), instigator, getDefaultSEXPXMLReader());
+    public static <T> T parse(String xml, String encoding, Streamer<T> streamer) throws UnsupportedEncodingException {
+        return parse(new ByteArrayInputStream(xml.getBytes(encoding)), streamer, getDefaultSEXPXMLReader());
     }
 
     /**
      * @param xml        the xml to parse
-     * @param instigator your fully created parser of the xml
+     * @param streamer   your fully created streamer of the xml
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      */
-    public static <T> T parse(String xml, ElementFinderInstigator<T> instigator) {
-        return parse(new ByteArrayInputStream(xml.getBytes()), instigator, getDefaultSEXPXMLReader());
+    public static <T> T parse(String xml, Streamer<T> streamer) {
+        return parse(new ByteArrayInputStream(xml.getBytes()), streamer, getDefaultSEXPXMLReader());
     }
 
     /**
      * @param xml        the xml to parse
-     * @param instigator your fully created parser of the xml
+     * @param streamer   your fully created streamer of the xml
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      */
-    public static <T> T parse(InputStream xml, ElementFinderInstigator<T> instigator) {
-        return parse(xml, instigator, getDefaultSEXPXMLReader());
+    public static <T> T parse(InputStream xml, Streamer<T> streamer) {
+        return parse(xml, streamer, getDefaultSEXPXMLReader());
     }
 
     /**
      * @param xml        the xml to parse
-     * @param instigator your fully created parser of the xml
+     * @param streamer   your fully created streamer of the xml
      * @param xmlReader  is the interface that an XML parser's SAX2 driver must implement , using this? _bad ass_ alert
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      */
-    public static <T> T parse(String xml, ElementFinderInstigator<T> instigator, XMLReader xmlReader) {
-        return parse(new ByteArrayInputStream(xml.getBytes()), instigator, xmlReader);
+    public static <T> T parse(String xml, Streamer<T> streamer, XMLReader xmlReader) {
+        return parse(new ByteArrayInputStream(xml.getBytes()), streamer, xmlReader);
     }
 
     /**
      * @param xml        the xml to parse
-     * @param instigator your fully created parser of the xml
+     * @param streamer   your fully created streamer of the xml
      * @param xmlReader  is the interface that an XML parser's SAX2 driver must implement , using this? _bad ass_ alert
      * @param <T>        the expected type of your parsed XML
      * @return your parsed XML as an object
      */
-    public static <T> T parse(InputStream xml, final ElementFinderInstigator<T> instigator, XMLReader xmlReader) {
+    public static <T> T parse(InputStream xml, final Streamer<T> streamer, XMLReader xmlReader) {
         final CountDownLatch latch = new CountDownLatch(1);
         Instigator latchedInstigator = new Instigator() {
             @Override
             public RootTag getRootTag() {
-                return instigator.getRootTag();
+                return streamer.getRootTag();
             }
 
             @Override
             public void create(RootElement rootElement) {
-                instigator.create(rootElement);
+                streamer.stream(rootElement);
             }
 
             @Override
@@ -139,10 +139,10 @@ public class SimpleEasyXmlParser {
             }
         };
 
-        RootTag rootTag = instigator.getRootTag();
+        RootTag rootTag = streamer.getRootTag();
         RootElement rootElement = new RootElement(rootTag.getNamespace(), rootTag.getTag());
         rootElement.setEndElementListener(latchedInstigator);
-        instigator.create(rootElement);
+        streamer.stream(rootElement);
         xmlReader.setContentHandler(rootElement.getContentHandler());
         XmlParser xmlParser = new XmlParser();
         xmlParser.parse(xml, xmlReader);
@@ -153,7 +153,7 @@ public class SimpleEasyXmlParser {
             throw new RuntimeException(e);
         }
 
-        return instigator.getResultOrThrow();
+        return streamer.getStreamResult();
     }
 
     private static XMLReader getDefaultSEXPXMLReader() {
