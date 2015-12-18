@@ -32,18 +32,32 @@ String XML =
 
 ElementFinderFactory factory = SimpleEasyXmlParser.getElementFinderFactory();
 elementFinder = factory.getStringFinder();
-ElementFinderInstigator<String> instigator = new SimpleInstigator(elementFinder);
-String favouriteColour = SimpleEasyXmlParser.parse(XML, instigator);
+Streamer<String> streamer = new SimpleStreamer(elementFinder);
+String favouriteColour = SimpleEasyXmlParser.parse(XML, streamer);
 
-private static class SimpleInstigator extends ElementFinderInstigator<String> {
+private static class SimpleStreamer implements Streamer<String> {
 
-    public SimpleInstigator(ElementFinder<String> elementFinder) {
-        super(elementFinder, "favouriteColour");
+    private final ElementFinder<String> elementFinder;
+    private final String elementTag;
+
+    public SimpleStreamer(ElementFinder<String> elementFinder, String elementTag) {
+        this.elementFinder = elementFinder;
+        this.elementTag = elementTag;
     }
 
     @Override
     public RootTag getRootTag() {
         return RootTag.create("novoda");
+    }
+
+    @Override
+    public void stream(RootElement rootElement) {
+        elementFinder.find(rootElement, elementTag);
+    }
+
+    @Override
+    public String getStreamResult() {
+        return elementFinder.getResultOrThrow();
     }
 }
 ```
