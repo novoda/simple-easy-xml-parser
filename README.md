@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.novoda:sexp:1.0.4'
+    compile 'com.novoda:sexp:1.0.5'
 }
 ```
 
