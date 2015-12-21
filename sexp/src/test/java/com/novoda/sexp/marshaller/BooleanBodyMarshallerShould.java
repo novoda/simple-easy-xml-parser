@@ -15,10 +15,17 @@ public class BooleanBodyMarshallerShould {
     }
 
     @Test
-    public void marshall_strings_to_booleans() throws Exception {
-        String validInput = "true";
+    public void marshall_string_false_to_boolean_false() throws Exception {
+        String rawFalse = "false";
 
-        assertThat(booleanBodyMarshaller.marshall(validInput)).isTrue();
+        assertThat(booleanBodyMarshaller.marshall(rawFalse)).isFalse();
+    }
+
+    @Test
+    public void marshall_string_true_to_boolean_true() throws Exception {
+        String rawTrue = "true";
+
+        assertThat(booleanBodyMarshaller.marshall(rawTrue)).isTrue();
     }
 
     @Test(expected = IllegalArgumentException.class)
