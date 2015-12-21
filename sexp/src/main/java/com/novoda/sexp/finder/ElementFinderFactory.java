@@ -2,6 +2,7 @@ package com.novoda.sexp.finder;
 
 import com.novoda.sexp.marshaller.AttributeMarshaller;
 import com.novoda.sexp.marshaller.BodyMarshaller;
+import com.novoda.sexp.marshaller.BooleanBodyMarshaller;
 import com.novoda.sexp.marshaller.IntegerBodyMarshaller;
 import com.novoda.sexp.marshaller.IntegerWrapperBodyMarshaller;
 import com.novoda.sexp.marshaller.StringBodyMarshaller;
@@ -48,6 +49,15 @@ public class ElementFinderFactory {
      */
     public ElementFinder<Integer> getIntegerFinder() {
         return getTypeFinder(new IntegerBodyMarshaller());
+    }
+
+    /**
+     * Will parse the body of an XML tag into an {@link Boolean}
+     *
+     * @return {@link ElementFinder}
+     */
+    public ElementFinder<Boolean> getBooleanFinder() {
+        return getTypeFinder(new BooleanBodyMarshaller());
     }
 
     /**
