@@ -70,10 +70,11 @@ public class BasicElementFinderShould {
     @Test
     public void pop_a_result_when_parsing_finished() throws Exception {
         String result = "result";
-
         elementCreator.onParsed(result);
 
-        assertThat(elementCreator.popResult()).isEqualTo(result);
+        Object actual = elementCreator.popResult();
+
+        assertThat(actual).isEqualTo(result);
     }
 
     @Test(expected = BasicElementFinder.ResultNotFoundException.class)
@@ -90,12 +91,12 @@ public class BasicElementFinderShould {
 
     @Test
     public void not_cache_result_after_a_result_is_popped() throws Exception {
-        String result = "result";
+        elementCreator.onParsed("ignore");
+        elementCreator.popResult();
 
-        elementCreator.onParsed(result);
+        Object actual = elementCreator.popResult();
 
-        assertThat(elementCreator.popResult()).isEqualTo(result);
-        assertThat(elementCreator.popResult()).isNull();
+        assertThat(actual).isNull();
     }
 
 }
