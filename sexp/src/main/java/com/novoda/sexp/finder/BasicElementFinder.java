@@ -39,6 +39,21 @@ public class BasicElementFinder<T> implements ElementFinder<T> {
         return result;
     }
 
+    @Override
+    public T popResult() {
+        try {
+            return result;
+        } finally {
+            result = null;
+        }
+    }
+
+    @Override
+    public T popResultOrThrow() {
+        validateResult();
+        return popResult();
+    }
+
     private void validateResult() {
         if (result == null) {
             throw new ResultNotFoundException();
