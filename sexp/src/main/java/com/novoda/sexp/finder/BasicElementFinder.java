@@ -41,9 +41,11 @@ public class BasicElementFinder<T> implements ElementFinder<T> {
 
     @Override
     public T popResult() {
-        T r = result;
-        result = null;
-        return r;
+        try {
+            return result;
+        } finally {
+            result = null;
+        }
     }
 
     @Override
