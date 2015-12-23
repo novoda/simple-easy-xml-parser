@@ -56,7 +56,7 @@ public class BasicElementFinderShould {
     }
 
     @Test(expected = BasicElementFinder.ResultNotFoundException.class)
-    public void throw_exception_when_result_has_not_been_parsed_and_a_required_result_is_asked_for() throws Exception {
+    public void throw_exception_when_result_has_not_been_parsed_or_found_and_a_required_result_is_asked_for() throws Exception {
         elementCreator.getResultOrThrow();
     }
 
@@ -77,7 +77,7 @@ public class BasicElementFinderShould {
     }
 
     @Test(expected = BasicElementFinder.ResultNotFoundException.class)
-    public void throw_exception_when_result_has_not_been_parsed_and_a_result_is_popped() throws Exception {
+    public void throw_exception_when_result_has_not_been_parsed_or_found_and_a_result_is_popped() throws Exception {
         elementCreator.popResultOrThrow();
     }
 
