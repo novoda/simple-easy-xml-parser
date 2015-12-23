@@ -49,7 +49,22 @@ public class ListElementFinderShould {
 
     @Test(expected = UnsupportedOperationException.class)
     public void notSupportGetResult_asListCreatorWillCallbackAfterEveryListItemIsParsed() throws Exception {
+        elementCreator.getResult();
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void notSupportGetResultOrThrow_asListCreatorWillCallbackAfterEveryListItemIsParsed() throws Exception {
         elementCreator.getResultOrThrow();
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void notSupportPopResult_asListCreatorWillCallbackAfterEveryListItemIsParsed() throws Exception {
+        elementCreator.popResult();
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void notSupportPopResultOrThrow_asListCreatorWillCallbackAfterEveryListItemIsParsed() throws Exception {
+        elementCreator.popResultOrThrow();
     }
 
 }

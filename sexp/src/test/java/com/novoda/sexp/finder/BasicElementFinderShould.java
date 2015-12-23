@@ -52,7 +52,7 @@ public class BasicElementFinderShould {
 
         elementCreator.onParsed(result);
 
-        assertThat(elementCreator.getResultOrThrow()).isEqualTo(result);
+        assertThat(elementCreator.getResult()).isEqualTo(result);
     }
 
     @Test(expected = BasicElementFinder.ResultNotFoundException.class)
@@ -65,6 +65,37 @@ public class BasicElementFinderShould {
         Object result = elementCreator.getResult();
 
         assertThat(result).isNull();
+    }
+
+    @Test
+    public void pop_a_result_when_parsing_finished() throws Exception {
+        String result = "result";
+
+        elementCreator.onParsed(result);
+
+        assertThat(elementCreator.popResult()).isEqualTo(result);
+    }
+
+    @Test(expected = BasicElementFinder.ResultNotFoundException.class)
+    public void throw_exception_when_result_has_not_been_parsed_and_a_result_is_popped() throws Exception {
+        elementCreator.popResultOrThrow();
+    }
+
+    @Test
+    public void allow_null_results_when_get_result_is_popped() throws Exception {
+        Object result = elementCreator.popResult();
+
+        assertThat(result).isNull();
+    }
+
+    @Test
+    public void not_cache_result_after_a_result_is_popped() throws Exception {
+        String result = "result";
+
+        elementCreator.onParsed(result);
+
+        assertThat(elementCreator.popResult()).isEqualTo(result);
+        assertThat(elementCreator.popResult()).isNull();
     }
 
 }
