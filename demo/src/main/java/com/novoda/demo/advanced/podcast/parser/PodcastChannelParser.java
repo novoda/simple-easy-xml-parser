@@ -1,9 +1,9 @@
 package com.novoda.demo.advanced.podcast.parser;
 
 import com.novoda.demo.advanced.podcast.pojo.Channel;
-import com.novoda.demo.advanced.podcast.pojo.PodcastItem;
 import com.novoda.demo.advanced.podcast.pojo.ChannelImage;
 import com.novoda.demo.advanced.podcast.pojo.Link;
+import com.novoda.demo.advanced.podcast.pojo.PodcastItem;
 import com.novoda.demo.advanced.podcast.pojo.Title;
 import com.novoda.sax.Element;
 import com.novoda.sax.ElementListener;

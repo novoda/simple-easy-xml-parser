@@ -18,10 +18,50 @@ repositories {
 }
 
 dependencies {
-    compile 'com.novoda:sexp:1.0.3'
+    compile 'com.novoda:sexp:1.0.8'
 }
 ```
 
+## Simple usage
+
+```java
+String XML =
+            "<novoda>" +
+              "<favouriteColour>Blue</favouriteColour>" +
+            "</novoda>";
+
+ElementFinderFactory factory = SimpleEasyXmlParser.getElementFinderFactory();
+elementFinder = factory.getStringFinder();
+Streamer<String> streamer = new SimpleStreamer(elementFinder);
+String favouriteColour = SimpleEasyXmlParser.parse(XML, streamer);
+
+private static class SimpleStreamer implements Streamer<String> {
+
+    private final ElementFinder<String> elementFinder;
+    private final String elementTag;
+
+    public SimpleStreamer(ElementFinder<String> elementFinder, String elementTag) {
+        this.elementFinder = elementFinder;
+        this.elementTag = elementTag;
+    }
+
+    @Override
+    public RootTag getRootTag() {
+        return RootTag.create("novoda");
+    }
+
+    @Override
+    public void stream(RootElement rootElement) {
+        elementFinder.find(rootElement, elementTag);
+    }
+
+    @Override
+    public String getStreamResult() {
+        return elementFinder.getResultOrThrow();
+    }
+}
+```
+(See the `demo` and `demoAndroid` modules for more.)
 
 ## Links
 

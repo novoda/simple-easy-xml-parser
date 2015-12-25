@@ -1,7 +1,6 @@
 package com.novoda.sexp.finder;
 
 import com.novoda.sax.Element;
-
 import com.novoda.sexp.parser.Parser;
 
 public class BasicElementFinder<T> implements ElementFinder<T> {
@@ -38,6 +37,21 @@ public class BasicElementFinder<T> implements ElementFinder<T> {
     public T getResultOrThrow() {
         validateResult();
         return result;
+    }
+
+    @Override
+    public T popResult() {
+        try {
+            return result;
+        } finally {
+            result = null;
+        }
+    }
+
+    @Override
+    public T popResultOrThrow() {
+        validateResult();
+        return popResult();
     }
 
     private void validateResult() {

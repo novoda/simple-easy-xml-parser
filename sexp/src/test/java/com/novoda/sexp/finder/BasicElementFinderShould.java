@@ -52,11 +52,11 @@ public class BasicElementFinderShould {
 
         elementCreator.onParsed(result);
 
-        assertThat(elementCreator.getResultOrThrow()).isEqualTo(result);
+        assertThat(elementCreator.getResult()).isEqualTo(result);
     }
 
     @Test(expected = BasicElementFinder.ResultNotFoundException.class)
-    public void throw_exception_when_result_has_not_been_parsed_and_a_required_result_is_asked_for() throws Exception {
+    public void throw_exception_when_result_has_not_been_parsed_or_found_and_a_required_result_is_asked_for() throws Exception {
         elementCreator.getResultOrThrow();
     }
 
@@ -65,6 +65,38 @@ public class BasicElementFinderShould {
         Object result = elementCreator.getResult();
 
         assertThat(result).isNull();
+    }
+
+    @Test
+    public void pop_a_result_when_parsing_finished() throws Exception {
+        String result = "result";
+        elementCreator.onParsed(result);
+
+        Object actual = elementCreator.popResult();
+
+        assertThat(actual).isEqualTo(result);
+    }
+
+    @Test(expected = BasicElementFinder.ResultNotFoundException.class)
+    public void throw_exception_when_result_has_not_been_parsed_or_found_and_a_result_is_popped() throws Exception {
+        elementCreator.popResultOrThrow();
+    }
+
+    @Test
+    public void allow_null_results_when_get_result_is_popped() throws Exception {
+        Object result = elementCreator.popResult();
+
+        assertThat(result).isNull();
+    }
+
+    @Test
+    public void not_cache_result_after_a_result_is_popped() throws Exception {
+        elementCreator.onParsed("ignore");
+        elementCreator.popResult();
+
+        Object actual = elementCreator.popResult();
+
+        assertThat(actual).isNull();
     }
 
 }
