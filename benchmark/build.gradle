@@ -9,16 +9,3 @@ dependencies {
     compile 'org.simpleframework:simple-xml:2.7.1'
 }
 
-def mainClassName = "com.novoda.XmlParsingBenchmark"
-
-jar {
-    manifest {
-        attributes "Main-Class": "$mainClassName"
-    }
-
-    include("com/google/caliper/**")
-    include("com/novoda/sexp/**")
-    include("com/novoda/simple/**")
-    include("com/novoda/jackson/**")
-}
-
