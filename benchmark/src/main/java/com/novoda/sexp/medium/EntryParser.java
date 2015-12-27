@@ -33,23 +33,6 @@ public class EntryParser implements Parser<SexpMediumXmlBenchmark.Entry> {
     private ParseWatcher<SexpMediumXmlBenchmark.Entry> listener;
     private final List<SexpMediumXmlBenchmark.Link> linkList = new ArrayList<>();
 
-        /*
-    <entry>
-        <id>1234:categories/comedy</id>
-        <title type="text">Comedy</title>
-        <summary type="html">
-        Comedy Programmes
-        </summary>
-        <updated>2015-03-13T10:49:48.142Z</updated>
-        <link href="http://google.com"rel="self"title="A"type="application/atom+xml"/>
-        <link href="http://google.com"rel="related"title="B"type="application/atom+xml"/>
-        <link href="http://google.com"rel="related"title="C"type="application/atom+xml"/>
-        <link href="http://google.com"rel="related"title="D"type="application/atom+xml"/>
-        <link href="http://google.com"rel="related"title="E"type="application/atom+xml"/>
-        <link href="http://google.com"rel="related"title="F"type="application/atom+xml"/>
-        </entry>
-     */
-
     public EntryParser(ElementFinderFactory factory) {
         idFinder = factory.getStringFinder();
         titleFinder = factory.getStringFinder();

@@ -10,35 +10,6 @@ import java.util.List;
 
 public class FeedParser {
 
-/*
-        <id>1234cat</id>
-        <title type="text">
-        Programmes Categories
-        </title>
-        <updated>2015-03-13T10:49:48.142Z</updated>
-        <author>
-        <name> Bob Smith
-        </name>
-        </author>
-        <logo imageSource="default">http://google.com/xml.gif</logo>
-        <link href="http://google.com"rel="self"type="application/atom+xml"/>
-        <generator version="2.5">HalBot</generator>
-        <entry>
-        <id>1234:categories/comedy</id>
-        <title type="text">Comedy</title>
-        <summary type="html">
-        Comedy Programmes
-        </summary>
-        <updated>2015-03-13T10:49:48.142Z</updated>
-        <link href="http://google.com"rel="self"title="A"type="application/atom+xml"/>
-        <link href="http://google.com"rel="related"title="B"type="application/atom+xml"/>
-        <link href="http://google.com"rel="related"title="C"type="application/atom+xml"/>
-        <link href="http://google.com"rel="related"title="D"type="application/atom+xml"/>
-        <link href="http://google.com"rel="related"title="E"type="application/atom+xml"/>
-        <link href="http://google.com"rel="related"title="F"type="application/atom+xml"/>
-        </entry>
-*/
-
     private static final String TAG_ID = "id";
     private static final String TAG_TITLE = "title";
     private static final String TAG_UPDATED = "updated";
