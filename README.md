@@ -5,7 +5,7 @@ XML parsing is now sexy!
 
 ## Description
 
-A simple typed XML parser based upon Android sax parser but written in pure Java. SEXP gives callbacks for all parsing events and being written in pure java allows faster and more comprehensive testability.
+A simple, high performance, typed XML parser based upon Android sax parser but written in pure Java. SEXP gives callbacks for all parsing events and being written in pure java allows faster and more comprehensive testability.
 
 Moreover SEXP is a pull-parsing XML deserialiser which affects both performance (no reflection is required) and low memory footprint (unncessary objects are not allocated). You can refer to the following [micro-benchmarking](https://github.com/novoda/simple-easy-xml-parser/tree/master/benchmark) for further information.
 
