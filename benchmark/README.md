@@ -14,7 +14,7 @@ Future:
 
 Results:
 
-- For the medium XML input SEXP is performing 1.7x faster than [Jackson](https://github.com/FasterXML/jackson-dataformat-xml) and 2.5x faster than [Simple-Framework](http://simple.sourceforge.net/). [Details](https://github.com/novoda/simple-easy-xml-parser/tree/master/benchmark)
+- For the medium XML input SEXP is performing 1.7x faster than [Jackson](https://github.com/FasterXML/jackson-dataformat-xml) and 2.5x faster than [Simple-Framework](http://simple.sourceforge.net/) [Details](https://github.com/novoda/simple-easy-xml-parser/tree/master/benchmark)
 
 
 We rely on https://github.com/google/caliper/wiki/ to do the hard work of twiddling the nobs.
