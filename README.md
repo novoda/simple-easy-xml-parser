@@ -7,7 +7,12 @@ XML parsing is now sexy!
 
 A simple, high performance, typed XML parser based upon Android sax parser but written in pure Java. SEXP gives callbacks for all parsing events and being written in pure java allows faster and more comprehensive testability.
 
-Moreover SEXP is a pull-parsing XML deserialiser which affects both performance (no reflection is required) and low memory footprint (unncessary objects are not allocated). Our testing shows that SEXP is performing 1.7x faster than [Jackson](https://github.com/FasterXML/jackson-dataformat-xml) and 2.5x faster than [Simple-Framework](http://simple.sourceforge.net/). You can refer to the following [micro-benchmarking](https://github.com/novoda/simple-easy-xml-parser/tree/master/benchmark) for further information.
+Moreover SEXP is a pull-parsing XML deserialiser which affects both performance (no reflection is required) and low memory footprint (unncessary objects are not allocated). Our testing shows that SEXP performs:
+
+- 1.7x faster than [Jackson](https://github.com/FasterXML/jackson-dataformat-xml) 
+- 2.5x faster than [Simple-Framework](http://simple.sourceforge.net/). 
+
+You can refer to the following [micro-benchmarking](https://github.com/novoda/simple-easy-xml-parser/tree/master/benchmark) for further information.
 
 
 ## Adding to your project
