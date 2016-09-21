@@ -7,11 +7,11 @@ import static org.fest.assertions.api.Assertions.assertThat;
 public class StringWrapperBodyMarshallerShould {
 
     @Test
-    public void marshallStringInput() throws Exception {
+    public void marshalStringInput() throws Exception {
         StringWrapperBodyMarshaller<StringWrapperClass> cut = stringWrapperBodyMarshaller(StringWrapperClass.class);
 
         String testInput = "testInput";
-        StringWrapperClass output = cut.marshall(testInput);
+        StringWrapperClass output = cut.marshal(testInput);
 
         assertThat(output).isEqualTo(new StringWrapperClass(testInput));
     }
@@ -20,14 +20,14 @@ public class StringWrapperBodyMarshallerShould {
     public void onlyWorkForClassesWithASingleStringConstructorArg() throws Exception {
         StringWrapperBodyMarshaller<IntegerWrapperClass> cut = stringWrapperBodyMarshaller(IntegerWrapperClass.class);
 
-        cut.marshall("");
+        cut.marshal("");
     }
 
     @Test(expected = RuntimeException.class)
     public void onlyWorkForClassesWithASingleConstructorArg() throws Exception {
         StringWrapperBodyMarshaller<TwoArgWrapperClass> cut = stringWrapperBodyMarshaller(TwoArgWrapperClass.class);
 
-        cut.marshall("");
+        cut.marshal("");
     }
 
     private <T> StringWrapperBodyMarshaller<T> stringWrapperBodyMarshaller(Class<T> clazz) {

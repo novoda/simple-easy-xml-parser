@@ -18,7 +18,7 @@ public class BasicParser<T> implements Parser<T> {
                 new EndTextElementListener() {
                     @Override
                     public void end(String body) {
-                        listener.onParsed(bodyMarshaller.marshall(body));
+                        listener.onParsed(bodyMarshaller.marshal(body));
                     }
                 }
         );

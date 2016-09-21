@@ -11,7 +11,7 @@ public class StringWrapperBodyMarshaller<T> implements BodyMarshaller<T> {
     }
 
     @Override
-    public T marshall(String input) {
+    public T marshal(String input) {
         try {
             return clazz.getDeclaredConstructor(String.class).newInstance(input);
         } catch (InstantiationException e) {

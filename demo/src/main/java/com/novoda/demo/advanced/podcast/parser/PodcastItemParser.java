@@ -85,7 +85,7 @@ public class PodcastItemParser implements Parser<PodcastItem> {
 
     private static class ImageAttributeMarshaller implements AttributeMarshaller<Link> {
         @Override
-        public Link marshall(String... input) {
+        public Link marshal(String... input) {
             return new Link(input[0]);
         }
     }
