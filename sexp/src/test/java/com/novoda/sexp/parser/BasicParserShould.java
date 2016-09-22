@@ -50,6 +50,6 @@ public class BasicParserShould {
 
         mockParse(basicParser, mockListener);
 
-        verify(mockMarshaller).marshall(any(String.class));
+        verify(mockMarshaller).marshal(any(String.class));
     }
 }

@@ -26,7 +26,7 @@ public class BasicAttributeParser<T> implements Parser<T>, StartElementListener 
     @Override
     public void start(Attributes attributes) {
         String[] values = getAttributeValues(attributes);
-        listener.onParsed(attributeMarshaller.marshall(values));
+        listener.onParsed(attributeMarshaller.marshal(values));
     }
 
     private String[] getAttributeValues(Attributes attributes) {

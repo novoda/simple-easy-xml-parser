@@ -4,7 +4,7 @@ import com.novoda.sexp.marshaller.AttributeMarshaller;
 
 public class LinkAttributeMarshaller implements AttributeMarshaller<SexpMediumXmlBenchmark.Link> {
         @Override
-        public SexpMediumXmlBenchmark.Link marshall(String... input) {
+        public SexpMediumXmlBenchmark.Link marshal(String... input) {
             SexpMediumXmlBenchmark.Link link = new SexpMediumXmlBenchmark.Link();
             link.href = input[0];
             link.rel = input[1];

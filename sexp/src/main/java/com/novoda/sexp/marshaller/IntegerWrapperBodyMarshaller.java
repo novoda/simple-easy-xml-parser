@@ -11,7 +11,7 @@ public class IntegerWrapperBodyMarshaller<T> implements BodyMarshaller<T> {
     }
 
     @Override
-    public T marshall(String input) {
+    public T marshal(String input) {
         try {
             return clazz.getDeclaredConstructor(int.class).newInstance(Integer.parseInt(input));
         } catch (InstantiationException e) {

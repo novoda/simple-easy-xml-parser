@@ -7,10 +7,10 @@ import static org.fest.assertions.api.Assertions.assertThat;
 public class IntegerWrapperBodyMarshallerShould {
 
     @Test
-    public void marshallStringInput() throws Exception {
+    public void marshalStringInput() throws Exception {
         IntegerWrapperBodyMarshaller<IntegerWrapperClass> cut = integerWrapperBodyMarshaller(IntegerWrapperClass.class);
 
-        IntegerWrapperClass output = cut.marshall("1");
+        IntegerWrapperClass output = cut.marshal("1");
 
         assertThat(output).isEqualTo(new IntegerWrapperClass(1));
     }
@@ -19,21 +19,21 @@ public class IntegerWrapperBodyMarshallerShould {
     public void onlyWorkForClassesWithAnIntegerConstructorArg() throws Exception {
         IntegerWrapperBodyMarshaller<StringWrapperClass> cut = integerWrapperBodyMarshaller(StringWrapperClass.class);
 
-        cut.marshall("");
+        cut.marshal("");
     }
 
     @Test(expected = RuntimeException.class)
     public void onlyWorkForClassesWithASingleConstructorArg() throws Exception {
         IntegerWrapperBodyMarshaller<TwoArgWrapperClass> cut = integerWrapperBodyMarshaller(TwoArgWrapperClass.class);
 
-        cut.marshall("");
+        cut.marshal("");
     }
 
     @Test(expected = RuntimeException.class)
     public void failForClassesWithNoArgConstructor() throws Exception {
         IntegerWrapperBodyMarshaller<NoArgWrapperClass> cut = integerWrapperBodyMarshaller(NoArgWrapperClass.class);
 
-        cut.marshall("");
+        cut.marshal("");
     }
 
     @Test(expected = RuntimeException.class)
@@ -42,7 +42,7 @@ public class IntegerWrapperBodyMarshallerShould {
                 PrivateConstructorWrapperClass.class
         );
 
-        cut.marshall("1");
+        cut.marshal("1");
     }
 
     private <T> IntegerWrapperBodyMarshaller<T> integerWrapperBodyMarshaller(Class<T> clazz) {

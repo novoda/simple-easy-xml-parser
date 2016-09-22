@@ -15,15 +15,15 @@ public class StringBodyMarshallerShould {
     }
 
     @Test
-    public void marshallTheString() throws Exception {
+    public void marshalTheString() throws Exception {
         String theInput = "theInput";
 
-        assertThat(stringBodyMarshaller.marshall(theInput)).isEqualTo(theInput);
+        assertThat(stringBodyMarshaller.marshal(theInput)).isEqualTo(theInput);
     }
 
     @Test
-    public void marshallNull() throws Exception {
-        assertThat(stringBodyMarshaller.marshall(null)).isEqualTo(null);
+    public void marshalNull() throws Exception {
+        assertThat(stringBodyMarshaller.marshal(null)).isEqualTo(null);
     }
 
 }
